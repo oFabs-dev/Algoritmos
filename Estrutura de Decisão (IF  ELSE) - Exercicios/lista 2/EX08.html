@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX08</title>
+  </head>
+  <body>
+    <span>Qual sua meta de economia</span>
+    <input type="text" id="ipt_meta" />
+
+    <span>Quanto tem guardado</span>
+    <input type="text" id="ipt_guard" />
+
+    <button onclick="exibir()">Analisar economia</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let meta = Number(ipt_meta.value);
+    let guard = Number(ipt_guard.value);
+
+    if (meta == guard) {
+      div_exibir.innerHTML = `Parabéns, meta alcançada!`;
+    } else if (meta < guard) {
+      let ultrapassou = guard - meta;
+      div_exibir.innerHTML = `Meta ultrapassada em ${ultrapassou}`;
+    } else {
+      let falta = meta - guard;
+      div_exibir.innerHTML = `Força! Ainda em busca da meta! Falta ${falta}`;
+    }
+  }
+</script>

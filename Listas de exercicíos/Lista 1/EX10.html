@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX10</title>
+</head>
+<body>
+
+<span>Distância percorrida</span>
+    <input type="number" id="input_distancia">
+
+    <br>
+
+<span>Tempo Gasto</span>
+    <input type="number" id="input_tempo">
+
+    <br>
+
+<button onclick="exibir()"> Finalizar Treino</button>
+    
+</body>
+</html>
+
+<script>
+
+    function exibir(){
+        alert('Você percorreu '+ input_distancia.value +' km hoje!')
+        alert('O seu tempo total de exercício foi de '+ input_tempo.value +' minutos')
+    }
+</script>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX01</title>
+  </head>
+  <body>
+
+    <span>Digite sua altura</span>
+    <input type="text" id="ipt_altura" />
+
+    <button onclick="exibir()">Analisar Estatura</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let altura = Number(ipt_altura.value);
+
+    if (altura < 1.65) {
+      div_exibir.innerHTML = `Você pode ser piloto de corrida`;
+    } else if (altura < 1.8) {
+      div_exibir.innerHTML = `Você pode ser jogador de futebol`;
+    } else {
+      div_exibir.innerHTML = `Você pode ser jogador de vôlei ou basquete`;
+    }
+  }
+</script>

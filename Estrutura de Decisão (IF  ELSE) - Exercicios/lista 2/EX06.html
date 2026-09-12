@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX06</title>
+  </head>
+  <body>
+    <span>Qual time de São paulo você torce?</span>
+    <input type="text" id="ipt_time" />
+
+    <button onclick="exibir()">Fale sobre esse time</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let time = ipt_time.value;
+
+    if (time == "Corinthians") {
+      div_exibir.innerHTML = `<span style="background-color: black; color: white;">Salve o Corinthians</span>`;
+    } else if (time == "Palmeiras") {
+      div_exibir.innerHTML =
+        '<span style="background-color: green; color: white;">Salve o alviverde imponente</span>';
+    } else if (time == "Santos") {
+      div_exibir.innerHTML =
+        '<span style="background-color: white; color: black;">Agora quem dá a bola é o Santos</span>';
+    } else {
+      div_exibir.innerHTML =
+        '<span style="background-color: black; color: red;">Salve o Tricolor paulista</span>';
+    }
+  }
+</script>

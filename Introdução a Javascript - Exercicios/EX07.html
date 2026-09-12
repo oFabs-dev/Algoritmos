@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX07</title>
+</head>
+<body>
+
+
+ <span>Nome do pet</span>
+ <input type="text" id="input_pet">
+
+ <br>
+
+ <span>Espécie</span>
+ <input type="text" id="input_espécie">
+
+ <br>
+
+ <button onclick="exibir()"> indetificar pet </button>
+    
+</body>
+</html>
+
+<script>
+
+    function exibir(){
+        alert('O seu pet se chama ' + input_pet.value + ' e ele é um '+   input_espécie.value )
+    }
+</script>

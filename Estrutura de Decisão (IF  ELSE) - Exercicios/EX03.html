@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX03</title>
+</head>
+<body>
+    
+ <span>INSIRA A NOTAS</span> <br>
+<input type="number" id="ipt_n1"> <br>
+<input type="number" id="ipt_n2"> <br>
+<input type="number" id="ipt_n3">
+
+<br>
+
+<button onclick="exibir()">Analisar desepenho</button>
+
+<div id="div_exibir"></div>
+
+
+    
+</body>
+</html>
+
+
+<script>
+
+function exibir(){
+let n1 = Number(ipt_n1.value )
+let n2 = Number(ipt_n2.value)
+let n3 = Number(ipt_n3.value)
+let media = (n1 + n2 + n3) / 3
+
+if(media > 9.4){
+   div_exibir.innerHTML = (`Sua média foi de ${media.toFixed(2)}<br>
+   Parabéns, você é fora de série!`)
+} else{
+ div_exibir.innerHTML = (`Sua média foi de ${media.toFixed(2)}`)
+}
+
+
+}
+
+</script>
+
+

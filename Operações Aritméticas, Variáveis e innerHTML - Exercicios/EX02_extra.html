@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX02</title>
+</head>
+<body>
+
+ <span>Insira um valor</span>
+ <input type="number" id="input_valor">
+
+ <button onclick="retirar()">Retirar</button>
+ <button onclick="depositar()">Depositar</button>
+
+ <div id="div_exibir">Sem movimentação! Saldo atual: R$0</div>
+    
+</body>
+</html>
+
+<script>
+
+let saldo = 0
+
+function retirar(){
+let valor = Number(input_valor.value)
+saldo -= valor
+
+div_exibir.innerHTML = (`Retirada de R$${valor} efetuado! Saldo atual: R$${saldo.toFixed(2)}`)
+}
+
+function depositar(){
+let valor = Number(input_valor.value)
+saldo += valor
+
+div_exibir.innerHTML = (`Depósito de R$${valor} efetuado! Saldo atual: R$${saldo.toFixed(2)}`)
+}
+
+</script>

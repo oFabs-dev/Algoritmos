@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ptBR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+  </head>
+  <body style="background-color: darkolivegreen">
+    <input type="number" id="input_num1" style="font-size: xx-large" />
+    <input type="number" id="input_num2" style="font-size: xx-large" />
+
+    <button
+      onclick="multplicar()"
+      style="
+        font-size: xx-large;
+        background-color: lightgreen;
+        border-radius: 50%;
+      "
+    >
+      Multiplicar</button>
+
+    <button
+      onclick="divisao()"
+      style="
+        font-size: xx-large;
+        background-color: lightgreen;
+        border-radius: 50%;
+      "
+    >
+      Dividir</button>
+
+    <button
+      onclick="subtrair()"
+      style="
+        font-size: xx-large;
+        background-color: lightgreen;
+        border-radius: 50%;
+      "
+    >
+      Subtrair</button>
+
+    <button
+      onclick="soma()"
+      style="
+        font-size: xx-large;
+        background-color: lightgreen;
+        border-radius: 50%;
+      "
+    >
+      Soma</button>
+
+    <div id="div_exibir" style="font-size: xx-large; border: 2px solid"></div>
+  </body>
+</html>
+
+<script>
+  function multplicar(){
+    let n1 = Number(input_num1.value);
+    let n2 = Number(input_num2.value);  
+    let resultado = n1 * n2;
+    let mensagem = `O resultado da multiplicação é: ${resultado}`;
+    
+    div_exibir.innerHTML = mensagem;
+
+  }
+
+     function divisao(){
+      let n1 = Number(input_num1.value);
+      let n2 = Number(input_num2.value);  
+      let resultado = n1 / n2;
+      let mensagem = `O resultado da divisão é: ${resultado}`;
+    
+    div_exibir.innerHTML = mensagem;
+
+
+    }
+
+    function subtrair(){
+      let n1 = Number(input_num1.value);
+      let n2 = Number(input_num2.value);  
+      let resultado = n1 - n2;
+      let mensagem = `O resultado da subtração é: ${resultado}`;
+    
+    div_exibir.innerHTML = mensagem;
+
+  }
+
+
+   function soma(){
+      let n1 = Number(input_num1.value);
+      let n2 = Number(input_num2.value);  
+      let resultado = n1 + n2;
+      let mensagem = `O resultado da soma é: ${resultado}`;
+    
+    div_exibir.innerHTML = mensagem;
+  }
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX04</title>
+</head>
+<body>
+
+ <span> Nota continuada </span>
+ <input type="number" id="input_continuada">
+
+ <span> Nota semestral </span>
+ <input type="number" id="input_semestral">
+
+ <br>
+
+<span> Nome do aluno </span>
+ <input type="text" id="input_nome">
+
+ <button onclick="exibir()">Calcular</button>
+
+  <div id="div_exibir" style="font-size: xx-large;"></div>
+
+</body>
+</html>
+
+<script>
+
+function exibir(){
+let sem = Number(input_continuada.value)
+let con = Number(input_semestral.value)
+let nome = input_nome.value
+let resultado = con * 0.4 + sem * 0.6
+
+
+div_exibir.innerHTML = (`A média de ${nome} será de ${resultado}`)
+}
+
+</script>

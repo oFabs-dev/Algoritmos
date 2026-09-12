@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt4">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX05</title>
+</head>
+<body>
+ 
+<!-- 5. Rola a pizza - parte-2
+
+Refaça a questão anterior de tal forma que a frase do item d) apareça na cor de letra vermelha com itálico e negrito. -->
+
+<span>Valor da pizza</span>
+<input type="number" id="ipt_valor">
+
+<span>Quantidades de amigos</span>
+<input type="number" id="ipt_amigos">
+
+<button onclick="exibir()">Rola a pizza?</button>
+
+<i><b><div id="div_exibir" style="color: red;"></div></b></i>
+
+
+    
+</body>
+</html>
+
+<script>
+function exibir(){
+let valor = Number(ipt_valor.value)
+let amigos = Number(ipt_amigos.value)
+let porPessoa = valor / amigos
+
+if(porPessoa > 20){
+    div_exibir.innerHTML = (`Cada amigo vai pagar R$${porPessoa.toFixed(2)} pela pizza <br>
+    Deu ruim! Pizza muito cara!`)
+
+}else{
+    div_exibir.innerHTML = (`Cada amigo vai pagar R$${porPessoa.toFixed(2)} pela pizza`)
+ 
+}
+
+}
+
+</script>
+

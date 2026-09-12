@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX05</title>
+</head>
+<body>
+
+
+ <span>Quantas a horas você dormiu?</span>
+ <input type="number" id="input_sono">
+
+ <button onclick="exibir()">Calcular sono</button>
+
+ <div id="div_exibir" style="font-size: x-large;"></div>
+    
+</body>
+</html>
+
+<script>
+    function exibir(){
+    let sonoHR = Number(input_sono.value)
+    let fas1 = sonoHR * 0.05
+    let fas2 = sonoHR * 0.45
+    let fas3 = sonoHR * 0.30
+    let rem = sonoHR * 0.20
+
+
+    div_exibir.innerHTML = (` Ao dormir ${sonoHR} horas, você dormiu: <br>
+     ${fas1.toFixed(2)} horas na fase 1 <br>
+     ${fas2.toFixed(2)} horas na fase 2 <br>
+     ${fas3.toFixed(2)} horas na fase 3 <br>
+     ${rem.toFixed(2)} horas na fase REM  `)
+
+
+    }
+</script>

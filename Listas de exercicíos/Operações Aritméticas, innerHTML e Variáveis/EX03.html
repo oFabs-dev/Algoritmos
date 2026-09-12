@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX03</title>
+</head>
+<body>
+
+ <span>Nome do aluno</span>
+ <input type="text" id="input_nome">
+
+ <br>
+
+<span>Ativ. Avaliativa 1</span>
+<input type="number" id="input_ava1">
+
+ <span>Ativ. Avaliativa 2</span>
+<input typ="number" id="input_ava2">
+
+  <span>Ativ. Avaliativa 3</span>
+<input type="number" id="input_ava3">
+
+<button onclick="exibir()"> Mostrar nota </button>
+
+<br>
+
+<div id="div_exibir"></div>
+<div id="div_exibir2"></div>
+
+
+</body>
+</html>
+
+<script> 
+
+function exibir(){
+let ava1 = Number(input_ava1.value)
+let ava2 = Number(input_ava2.value)
+let ava3 = Number(input_ava3.value)
+let soma = Number(ava1 + ava2 + ava3)
+let nome = input_nome.value
+let media = (ava1 + ava2 + ava3) / 3
+
+div_exibir.innerHTML = (`A soma das suas três atividades é: ${soma}`)
+div_exibir2.innerHTML = (`${nome}, a média das suas atividades é: ${media}`)
+
+}
+
+
+
+</script>

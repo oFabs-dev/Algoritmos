@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX10</title>
+  </head>
+  <body>
+    <span>Velocidade em km/h</span>
+    <input type="text" id="ipt_velocidade" />
+
+    <span>Limite de velocidade</span>
+    <input type="text" id="ipt_limite" />
+
+    <button onclick="exibir()">Verificar</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let veloc = Number(ipt_velocidade.value);
+    let limite = Number(ipt_limite.value);
+    let Excedendo = limite + limite * 0.2;
+
+    if (veloc <= limite) {
+      div_exibir.innerHTML = `Velocidade dentro do limite. Boa direção!`;
+    } else if (veloc < Excedendo) {
+      div_exibir.innerHTML = `Atenção! Excedendo o limite permitido`;
+    } else {
+      div_exibir.innerHTML = `Multa grave! Velocidade muito acima do permitido`;
+    }
+  }
+</script>

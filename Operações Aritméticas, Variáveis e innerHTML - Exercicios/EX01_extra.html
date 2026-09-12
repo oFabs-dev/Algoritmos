@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX01</title>
+</head>
+<body>
+
+
+<button onclick="Receber()">Receber 100</button>
+
+<button onclick="Pagar()">Pagar 50</button>
+
+<div id="div_exibir">Transferência de R$0 recebida! Saldo atual:R$0</div>
+
+    
+</body>
+</html>
+
+<script>
+
+let contagem = 0
+
+
+function Receber(){
+contagem += 100
+let valor = 100
+let movimentacao = 'Transferência'
+div_exibir.innerHTML = (`${movimentacao} de R$${valor} recebida! Saldo atual:R$${contagem}`)
+}
+
+function Pagar(){
+contagem -= 50
+let valor = 50  
+let movimentacao = 'Pagamento'
+div_exibir.innerHTML = (`${movimentacao} de R$${valor} recebida! Saldo atual:R$${contagem}`)
+}
+
+
+</script>

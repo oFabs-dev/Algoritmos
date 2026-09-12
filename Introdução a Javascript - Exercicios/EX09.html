@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX09</title>
+</head>
+<body>
+
+
+ <span>Temperatura</span>
+    <input type="number" id="input_temperatura">
+
+    <br>
+
+<span>Condição do tempo</span>
+    <input type="text" id="input_cond">
+
+    <br>
+
+    <button onclick="exibir()"> Ver dica</button>
+
+</body>
+</html>
+
+<script>
+    function exibir(){
+
+        alert('Está fazendo ' + input_temperatura.value + ' graus e o dia está ' + input_cond.value)
+    }
+</script>

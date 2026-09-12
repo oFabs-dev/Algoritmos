@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EX13</title>
+  </head>
+  <body>
+    <span>Qual pokemom inicial(Bulbasaur, Charmander ou Squirtle)</span>
+    <input type="text" id="ipt_pokemom" />
+
+    <button onclick="exibir()">Escolher Pokemom</button>
+
+    <div id="div_exibir"></div>
+
+    <img src="" alt="" />
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let poke = ipt_pokemom.value;
+
+    if (poke == "Bulbasaur") {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBzJDZOmpcuQ2ylmn53hBU42ekWc790TdB_cV8afbwTA&s=10" alt="">`;
+    } else if (poke == "Charmander") {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ac7JVxj9FDD6XFSySYUSEqSSrQfW_FupeWOjulM4hQ&s=10" alt="">`;
+    } else div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBFvy5BmTDGvmSg3Oecw8qbL5dXvW46UFb3dre4HdV7Q&s=10" alt="">`;
+  }
+</script>

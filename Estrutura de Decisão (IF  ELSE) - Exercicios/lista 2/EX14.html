@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span>Como você esta se sentindo?(Feliz,Triste,Bravo,Supreso e Cansado)</span>
+    <input type="text" id="ipt_humor" />
+
+    <button onclick="exibir()">Mostrar Humor</button>
+
+    <div id="div_exibir"></div>
+
+    <img src="" alt="" />
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let humor = ipt_humor.value;
+
+    if (humor == "Feliz") {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsbfkT9dKt4N779GOV0P8_e-RdZ-_JEmYwBdFi7PkIGg&s=10" alt="">`;
+    } else if (humor == "Triste") {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMpTxT5ilnax3HuJj-DPuMc1gQ8fq1IRWJ8I5PThdDXA&s=10" alt="">`;
+    } else if (humor == "Bravo") {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTincTJKCvcko6AHjv9kUIGoJMfgjgR8twfhyhIRgCSzQ&s=10" alt="">`;
+    } else if (humor == "Supreso") {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHZJhV6xFwA_vr3OuUkfNUf4QMeO7vuURjpZPqE94zSA&s=10" alt="">`;
+    } else {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ37p5ibuQDZxXimX3QeRWLCQ-aosARI54rpIb9u7mFA&s=10" alt="">`;
+    }
+  }
+</script>

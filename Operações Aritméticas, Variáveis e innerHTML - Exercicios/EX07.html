@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ptBR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX02</title>
+</head>
+<body>
+
+
+<span>Sabor da pizza</span>
+<input type="text" id="input_saborPizza">
+
+<span>Preço da pizza</span>
+<input type="number" id="input_valorPizza">
+
+<span> Quantidade de pessoas que vai comer</span> 
+<input type="numner" id="input_comer">
+
+<button onclick="exibir()">Ver valor por amigo</button>
+
+<div id="div_exibir" style="font-size: x-large;"></div>
+
+</body>
+</html>
+
+
+<script>
+
+    function exibir(){
+        let saborPizza = input_saborPizza.value
+        let valorPizza = Number(input_valorPizza.value)
+        let comer = Number(input_comer.value)
+        let DivAmigo = (valorPizza / comer) + (valorPizza * 0.1)
+
+        div_exibir.innerHTML =(`Cada amigo vai colaborar com R$${DivAmigo} para a pizza de ${saborPizza}`)
+
+    }
+
+
+</script>
