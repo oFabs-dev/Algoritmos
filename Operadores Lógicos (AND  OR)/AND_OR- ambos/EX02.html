@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 2. Simulador de Preferências de Compras: Será que Robervaldo Gostaria?
 Imagine que Robervaldo está buscando um novo celular. Ele tem algumas preferências específicas para a escolha de modelo.
 
@@ -26,6 +26,34 @@ c) Ao clicar em "Será que ele gosta?", mostre, abaixo:
 A imagem de uma pessoa feliz, caso as características do celular coincidam com as preferências de Robervaldo.
 Ou a imagem de uma pessoa decepcionada, caso contrário.   -->
 
+    <label for="ipt_tela">Tamanho da tela</label>
+    <input type="text" id="ipt_tela" />
+    <br />
 
-</body>
+    <span>Cor do celular</span>
+    <select id="select_cor">
+      <option disabled selected>Selecione uma cor</option>
+      <option>Preto</option>
+      <option>Prata</option>
+      <option>Azul</option>
+      <option>Vermelho</option>
+    </select>
+
+    <button onclick="exibir()">Será que ele gosta?</button>
+
+    <div id="div_exibir"></div>
+  </body>
 </html>
+
+<script>
+  function exibir() {
+    let tam = Number(ipt_tela.value);
+    let cor = select_cor.value;
+
+    if (tam > 6.5 && (cor == "Prata" || cor == "Preto")) {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8qPvOxgCDRASQdVka0Jfhh-opQAQHghpOJ_VOYhTTng&s=10" alt="">`;
+    } else {
+      div_exibir.innerHTML = `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvzrm3a9uXPtOWExmp7pU4-F21B5raQE6so9LWBMOO0w&s=10" alt="">`;
+    }
+  }
+</script>

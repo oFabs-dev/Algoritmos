@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <!-- 4. Autenticação Segura: Acesso ao Banco Melete
+Um novo banco eletrônico, o Banco Melete possui um sistema diferenciado de autenticação no qual pede um login,
+ uma senha e uma 3ª informação pessoal, que pode ser o ano de nascimento ou o nome do animal de estimação do cliente. 
+ Crie um protótipo que simule a autenticação de um determinado cliente, o qual: 
+
+a) Solicite o login, a senha e a informação pessoal ao usuário 
+
+b) Ao clicar num botão "Autenticar", exiba uma dessas frases abaixo do botão: 
+
+     b.1.) "Usuário autenticado", caso o login seja "ana", a senha "braga" e a informação pessoal for ou "1949" ou "louro josé" 
+
+     b.2.) "Falha na autenticação", caso as regras de verificação em b.1) falhem  -->
+
+        <label for="ipt_login">Login:</label>
+        <input type="text" id="ipt_login" />
+
+        <label for="ipt_senha">Senha:</label>
+        <input type="text" id="ipt_senha" />
+
+        <label for="ipt_pessoal">Informação pessoal:</label>
+        <input type="text" id="ipt_pessoal" />
+
+        <button onclick="exibir()">Autenticar</button>
+
+        <div id="div_exibir"></div>
+      </body>
+    </html>
+  </body>
+</html>
+<script>
+  function exibir() {
+    let login = ipt_login.value;
+    let senha = ipt_senha.value;
+    let pessoal = ipt_pessoal.value;
+
+    if (
+      login == "ana" &&
+      senha == "braga" &&
+      (pessoal == "louro josé" || pessoal == "1949")
+    ) {
+      div_exibir.innerHTML = `Usuário autenticado`;
+    } else {
+      div_exibir.innerHTML = `Falha na autenticação`;
+    }
+  }
+</script>
