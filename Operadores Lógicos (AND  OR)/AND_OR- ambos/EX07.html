@@ -25,5 +25,49 @@ d) Em caso de usuário bloqueado, não adianta nem tentar fazer uma autenticaç�
 e) Caso o usuário autentique com sucesso, sem que tenham sido queimadas as 3 tentativas,
  a mensagem de autenticação aparece normalmente e a frase com a quantidade de tentativas deve sumir da tela e
   deve ser "reiniciada" para as próximas falhas.  -->
+
+
+          <label for="ipt_login">Login:</label>
+        <input type="text" id="ipt_login" />
+
+        <label for="ipt_senha">Senha:</label>
+        <input type="text" id="ipt_senha" />
+
+        <label for="ipt_pessoal">Informação pessoal:</label>
+        <input type="text" id="ipt_pessoal" />
+
+        <button onclick="exibir()">Autenticar</button>
+
+        <div id="div_exibir"></div>
+      </body>
+    </html>
+  </body>
+</html>
+<script>
+
+    let tentativa = 4
+
+  function exibir() {
+    let login = ipt_login.value;
+    let senha = ipt_senha.value;
+    let pessoal = ipt_pessoal.value;
+   
+
+    if (
+      login == "ana" &&
+      senha == "braga" &&
+      (pessoal == "louro josé" || pessoal == "1949")
+    ) {
+      div_exibir.innerHTML = `Usuário autenticado`;
+    } else if (tentativa == 0){
+       div_exibir.innerHTML = `Usuário BLOQUEADO! Procure seu gerente!`
+    }else{
+     tentativa -= 1
+      div_exibir.innerHTML = `Falha na autenticação`
+      div_exibir.innerHTML += `Você ainda tem ${tentativa} tentativa(s)`
+    }
+  }
+</script>
 </body>
 </html>
+
