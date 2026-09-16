@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 5. Check-in de Voo
+Uma companhia aérea só permite o embarque se o passageiro tiver documento válido E 
+(tiver feito check-in online OU tiver chegado ao aeroporto com pelo menos 2 horas de antecedência do voo).
+
+Crie um programa o qual:
+
+a) Pergunte, com um select ("Sim"/"Não"), se o documento do passageiro está válido
+
+b) Pergunte, com um select ("Sim"/"Não"), se o passageiro fez check-in online
+
+c) Solicite quantas horas de antecedência o passageiro chegou ao aeroporto
+
+d) Ao clicar em "Verificar embarque", exiba um alert com "Embarque liberado" ou 
+"Embarque negado", conforme a regra acima -->
+
+
+<span>Documento está valido</span>
+    <select id="select_valido">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+
+    <span>Check-in online</span>
+    <select id="select_online">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+
+    <span>Quantas horas de antecedência:</span>
+    <input type="text" id="ipt_horas">
+
+    <button onclick="verificar()">Verificar embarque</button>
+
+</body>
+</html>
+
+<script>
+
+function verificar(){
+let valido = select_valido.value
+let online = select_online.value
+let horas = Number(ipt_horas.value)
+
+if((valido == 'Sim' && online == 'Sim') || horas >= 2){
+    alert(`Embarque liberado`)
+}else{
+    alert(`Embarque negado`)
+}
+
+}
+</script>
+

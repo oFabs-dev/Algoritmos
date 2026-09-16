@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 10. Matrícula em Curso Avançado
+Uma escola permite a matrícula de um aluno em um curso avançado se ele já tiver concluído o curso básico
+ com média de pelo menos 7, OU se tiver sido aprovado no teste de nivelamento com nota de pelo menos 8, 
+ desde que, em ambos os casos, a documentação do aluno esteja completa.
+
+Crie um programa o qual:
+
+a) Pergunte, com um select ("Sim"/"Não"), se o aluno concluiu o curso básico
+
+b) Solicite a média do aluno no curso básico
+
+c) Solicite a nota do aluno no teste de nivelamento
+
+d) Pergunte, com um select ("Sim"/"Não"), se a documentação do aluno está completa
+
+e) Ao clicar em "Verificar matrícula", exiba um alert com "Matrícula liberada para o curso avançado"
+ ou "Matrícula não liberada", conforme as regras acima -->
+
+    <span>Concluiu o curso básico</span>
+    <select id="select_curso">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+    <br>
+
+    <span>Média do aluno no curso básico</span>
+    <input type="text" id="ipt_media" />
+    <br>
+
+    <span>Nota do nivelamento</span>
+    <input type="text" id="ipt_nivel" />
+    <br>
+
+    <span>Documentação do aluno está completa</span>
+    <select id="select_doc">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+    <br>
+
+    <button onclick="verificar()">Verificar matrícula</button>
+  </body>
+</html>
+
+<script>
+
+  function verificar(){
+  let curso = select_curso.value
+  let media = Number(ipt_media.value)
+  let doc = select_doc.value
+  let nivel = Number(ipt_nivel.value)
+
+  if((curso == 'Sim' && media >= 7 || nivel >= 8)&&(doc == 'Sim')){
+    alert(`Matrícula liberada para o curso avançado`)
+  }else{
+    alert(`Matrícula não liberada`)
+  }
+  }
+</script>

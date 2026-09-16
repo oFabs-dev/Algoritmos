@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 3. Bolsa de Estudos Integral
+Uma faculdade concede bolsa integral para alunos cuja renda familiar per capita seja de até R$ 800 E 
+que tenham média escolar de pelo menos 8, OU para alunos que sejam atletas federados E tenham média escolar de pelo menos 6.
+
+Crie um programa o qual:
+
+a) Solicite a renda familiar per capita do aluno
+
+b) Solicite a média escolar do aluno
+
+c) Pergunte, com um select ("Sim"/"Não"), se o aluno é atleta federado
+
+d) Ao clicar em "Verificar bolsa", exiba um alert com "Bolsa integral concedida!" ou "Bolsa não concedida",
+conforme as regras acima -->
+
+    <span>Renda familiar per capita</span>
+    <input type="text" id="ipt_perCapita" />
+
+    <span>Média escolar do aluno</span>
+    <input type="text" id="ipt_media" />
+
+    <span>Aluno é atleta federado</span>
+    <select id="select_federado">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+
+    <button onclick="verificar()">Verificar bolsa</button>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let perCapita = Number(ipt_perCapita.value);
+    let media = Number(ipt_media.value);
+    let federado = select_federado.value;
+
+    if ((perCapita <= 800 && media >= 8) || (federado == "Sim" && media >= 6)) {
+      alert(`Bolsa integral concedida!`);
+    } else {
+      alert(`Bolsa não concedida`);
+    }
+  }
+</script>

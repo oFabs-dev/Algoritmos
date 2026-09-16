@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 6. Promoção Relâmpago da Loja
+Uma loja concede desconto na compra se o cliente comprar pelo menos 3 itens E 
+(for cliente do programa de fidelidade OU tiver um cupom válido digitado), 
+desde que o valor da compra seja de pelo menos R$ 50.
+
+Crie um programa o qual:
+
+a) Solicite a quantidade de itens comprados
+
+b) Solicite o valor total da compra
+
+c) Pergunte, com um select ("Sim"/"Não"), se o cliente é do programa de fidelidade
+
+d) Solicite o cupom digitado pelo cliente (considere válido apenas o cupom "PROMO10")
+
+e) Ao clicar em "Aplicar desconto", exiba um alert com "Desconto aplicado!" ou "Compra não elegível para desconto", 
+conforme as regras acima -->
+
+    <span>Quantidade de itens comprados</span>
+    <input type="text" id="ipt_itens" />
+
+    <span>Valor da compra</span>
+    <input type="text" id="ipt_valor" />
+
+    <span>Programa de fidelidade</span>
+    <select id="select_fidelidade">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+
+
+    <span>Cupom</span>
+    <input type="text" id="ipt_cumpom" />
+
+    <button onclick="exibir()">Aplicar desconto</button>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let itens = Number(ipt_itens.value);
+    let valor = Number(ipt_valor.value);
+    let fidel = select_fidelidade.value;
+    let cupom = ipt_cumpom.value;
+
+    if (
+      (itens >= 3 && fidel == `Sim`) ||
+      (cupom == "PROMO10" && valor >= 50)
+    ) {
+      alert(`Desconto aplicado!`);
+    } else {
+      alert(`Compra não elegível para desconto`);
+    }
+  }
+</script>

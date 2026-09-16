@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 8. Elegibilidade para Vacinação Prioritária
+Um posto de saúde libera a vacinação prioritária para pessoas com idade de pelo menos 60 anos
+ OU que possuam alguma condição de risco (comorbidade), desde que, em qualquer um dos casos, 
+ a pessoa esteja com o cadastro no sistema de saúde em dia.
+
+Crie um programa o qual:
+
+a) Solicite a idade da pessoa
+
+b) Pergunte, com um select ("Sim"/"Não"), se a pessoa possui alguma comorbidade
+
+c) Pergunte, com um select ("Sim"/"Não"), se o cadastro da pessoa no sistema de saúde está em dia
+
+d) Ao clicar em "Verificar prioridade", exiba um alert com "Vacinação prioritária liberada" 
+ou "Vacinação prioritária não liberada", conforme as regras acima -->
+
+    <span>Idade</span>
+    <input type="text" id="ipt_idade" />
+
+    <br>
+
+    <span>Possui alguma comorbidade</span>
+    <select id="select_risco">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+
+    <br>
+
+    <span>Cadastro no sistema de saude em dia</span>
+    <select id="select_cadastro">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+
+    <br>
+
+<button onclick="verificar()">Verificar prioridade</button>
+  </body>
+</html>
+
+<script>
+function verificar(){
+let idade = Number(ipt_idade.value)
+let risco = select_risco.value
+let cadastro = select_cadastro.value
+
+if((idade >= 60 || risco == 'Sim') && cadastro == 'Sim'){
+    alert(`Vacinação prioritária liberada`)
+}else{
+    alert(`Vacinação prioritária não liberada`)
+}
+}
+</script>

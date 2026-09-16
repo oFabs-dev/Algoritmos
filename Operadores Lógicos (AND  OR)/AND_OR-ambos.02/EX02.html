@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 2. Aprovação de Crédito Bancário
+Um banco aprova um empréstimo se o cliente tiver renda mensal de pelo menos R$ 3000 E score de crédito de pelo menos 600,
+ OU se o cliente já for correntista há mais de 5 anos E não tiver nenhuma dívida em aberto.
+
+Crie um programa o qual:
+
+a) Solicite a renda mensal do cliente
+
+b) Solicite o score de crédito do cliente
+
+c) Solicite há quantos anos o cliente é correntista
+
+d) Pergunte, com um select ("Sim"/"Não"), se o cliente possui dívidas em aberto
+
+e) Ao clicar em "Analisar crédito", exiba um alert com "Empréstimo aprovado" ou "Empréstimo negado",
+ conforme as regras acima -->
+
+    <span>Renda mensal</span>
+    <input type="text" id="ipt_rendaMensal" />
+
+    <span>Score de crédito</span>
+    <input type="text" id="ipt_Score" />
+
+    <span>Há quantos anos você é correntista</span>
+    <input type="text" id="ipt_corre" />
+
+    <span>Divida em Aberto</span>
+    <select id="select_divida">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+
+    <button onclick="analisar()">Analisar Crédito</button>      
+  </body>
+</html>
+
+<script>
+  function analisar() {
+    let mensal = Number(ipt_rendaMensal.value);
+    let score = Number(ipt_Score.value);
+    let AnosCorre = Number(ipt_corre.value);
+    let divida = select_divida.value;
+
+    if (
+      (mensal >= 3000 && score >= 600) ||
+      (AnosCorre > 5 && divida == "Não")
+    ) {
+      alert(`Empréstimo aprovado`);
+    } else {
+      alert(`Empréstimo negado`);
+    }
+  }
+</script>

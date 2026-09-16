@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 7. Financiamento de Veículo
+Uma financeira aprova o financiamento de um carro se o solicitante tiver pelo menos 21 anos E possuir CNH válida E 
+(tiver renda mensal de pelo menos R$ 2500 OU apresentar um fiador).
+
+Crie um programa o qual:
+
+a) Solicite a idade do solicitante
+
+b) Pergunte, com um select ("Sim"/"Não"), se o solicitante possui CNH válida
+
+c) Solicite a renda mensal do solicitante
+
+d) Pergunte, com um select ("Sim"/"Não"), se o solicitante apresentou um fiador
+
+e) Ao clicar em "Analisar financiamento", exiba um alert com "Financiamento aprovado" ou "Financiamento negado", 
+conforme as regras acima -->
+
+    <span>Sua idade</span>
+    <input type="text" id="ipt_idade" />
+    <br>
+
+    <span>CNH Válida</span>
+    <select id="select_cnh">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+    <br>
+
+    <span>Sua renda mensal</span>
+    <input type="text" id="ipt_renda" />
+    <br>
+
+    <span>Apresentou um fiador</span>
+    <select id="select_fiador">
+      <option disabled selected>Selecione uma opção</option>
+      <option>Sim</option>
+      <option>Não</option>
+    </select>
+    <br>
+
+    <button onclick="analisar()">Analisar financiamento</button>
+  </body>
+</html>
+
+<script>
+
+  function analisar(){
+  let idade = Number(ipt_idade.value)
+  let cnh = select_cnh.value
+  let renda = Number(ipt_renda.value)
+  let fiador = select_fiador.value
+
+    if(idade >= 21 && cnh == 'Sim' && (renda >=2500 || fiador == 'Sim')){
+        alert(`Financiamento aprovado`)
+    }else{
+        alert(`Financiamento negado`)
+    }
+  }
+</script>
