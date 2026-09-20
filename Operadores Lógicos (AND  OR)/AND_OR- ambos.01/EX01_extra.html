@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Sistema de Recompensas e Descontos
+
+Você está criando um sistema de recompensas e descontos para um cliente que compra produtos em uma loja. O sistema precisa calcular o desconto e a recompensa com base em uma série de condições complexas, utilizando tanto os operadores lógicos and quanto or.
+
+Regras para o desconto e recompensa:
+
+Desconto:
+Se o cliente comprar mais de 10 produtos e gastar mais de R$ 1000,00, e for cliente VIP, ele recebe um desconto extra de 15%.
+Se o cliente comprar mais de 10 produtos e gastar mais de R$ 500,00 ou for VIP, ele recebe 10% de desconto.
+Se o cliente comprar entre 6 e 10 produtos e gastar mais de R$ 200,00, ou for VIP, ele recebe 5% de desconto.
+Se o cliente comprar 5 produtos ou menos ele não recebe desconto.
+Importante: os descontos podem ser acumulados
+
+Recompensa:
+O cliente recebe uma recompensa de 50 pontos se comprar mais de 5 produtos e gastar mais de R$ 200,00 ou se for cliente VIP.
+Se o cliente gastar mais de R$ 500,00 e comprar mais de 10 produtos, ele ganha uma recompensa extra de 100 pontos.
+O cliente não recebe recompensa se comprar 5 produtos ou menos.
+Entrada de Dados:
+
+ipt_quantidade_produtos: O número de produtos comprados pelo cliente (número inteiro).
+ipt_valor_total: O total gasto pelo cliente em reais (número decimal).
+ipt_cliente_vip: Se o cliente é VIP ou não (booleano: True ou False),para esse item, você pode utilizar um checkbox,
+ mas lembre-se de trocar o id para check_cliente_vip
+Saída Esperada:
+
+O valor do desconto que o cliente pode receber.
+O número de pontos de recompensa que o cliente vai acumular. -->
+
+    <label for="ipt_quantidade_produtos">Número de produtos comprados</label>
+    <input type="text" id="ipt_quantidade_produtos" />
+
+    <br />
+
+    <label for="ipt_valor">Total gasto</label>
+    <input type="text" id="ipt_valor" />
+
+    <br />
+
+    <label for="check_vip">Você é cliente VIP?</label>
+    <input type="checkbox" id="check_vip" value="Sim" />
+
+    <button onclick="calcular()">Calcular Desconto</button>
+    <br />
+    <br />
+
+    <div id="div_exibir">Desconto: 0% / Pontos: 0</div>
+  </body>
+</html>
+
+<script>
+  
+
+  function calcular() {
+    let valor = Number(ipt_valor.value);
+    let vip = check_vip.value;
+    let qtdProduto = Number(ipt_quantidade_produtos.value);
+    let desconto = 0;
+    let pontos = 0;
+
+    if (qtdProduto > 10 && valor > 1000 && vip == "Sim") {
+      desconto = 15 + 15;
+      pontos = 100 + 50;
+    } else if (qtdProduto > 10 && (valor > 500 || vip == "Sim")) {
+      desconto = 10 + 5;
+      pontos = 100 + 50;
+    } else if (
+      qtdProduto >= 6 &&
+      qtdProduto <= 10 &&
+      (valor > 200 || vip == "Sim")
+    ) {
+      desconto += 5;
+      pontos = 50;
+    } else {
+      desconto = 0;
+      pontos = 0;
+    }
+
+    div_exibir.innerHTML = `Desconto: ${desconto}%  /  Pontos: ${pontos}`;
+  }
+</script>
