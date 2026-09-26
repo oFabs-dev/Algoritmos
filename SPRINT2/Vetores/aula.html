@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    valor
+    <input type="text" id="ipt_valor">
+
+    <button onclick="adicionar()">add</button>
+    
+    <button onclick="exibir()">exibir</button>
+
+    <button onclick="remover()">rem</button>
+
+    <div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+
+let lista = [];
+
+
+
+function remover(){
+let removido = lista.pop()
+console.log(`valor removido ${removido}`)
+console.log(lista);
+
+}
+
+function exibir(){
+    div_exibir.innerHTML += `<br>${lista.replaceALL(',','<br>')}`
+}
+
+function adicionar(){
+let valor = ipt_valor.value
+lista.push(valor);
+console.log(lista)
+
+}
+
+function pesquisa(){
+
+    
+}
+
+</script>
