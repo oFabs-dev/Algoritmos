@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 4. Comparador de Palavras
 
 Crie um programa que:  
@@ -14,11 +14,14 @@ a) Solicite duas palavras ao usuário.
 
 b) Ao clicar num botão "Analisar Palavras": 
 
-   b1) Caso as palavras sejam exatamente iguais em conteúdo e digitação (letras maiúsculas e minúsculas), exiba "As palavras AAA e BBB são exatamente iguais!".
+   b1) Caso as palavras sejam exatamente iguais em conteúdo e digitação (letras maiúsculas e minúsculas), 
+   exiba "As palavras AAA e BBB são exatamente iguais!".
 
-   b2) Caso a digitação das palavras não seja exatamente igual, verifique se o conteúdo das palavras é igual, para exibir "As palavras AAA e BBB possuem o mesmo conteúdo, mas a digitação é diferente (maiúsculas e minúsculas)".
+   b2) Caso a digitação das palavras não seja exatamente igual, verifique se o conteúdo das palavras é igual, para exibir 
+   "As palavras AAA e BBB possuem o mesmo conteúdo, mas a digitação é diferente (maiúsculas e minúsculas)".
 
-   b3) Caso a digitação das palavras não seja igual e nem o conteúdo, exiba "As palavras AAA e BBB são completamente diferentes!".
+   b3) Caso a digitação das palavras não seja igual e nem o conteúdo,
+    exiba "As palavras AAA e BBB são completamente diferentes!".
 
 OBS: utilize .toLowerCase() e .toUpperCase() para manipular os textos em um tipo padrão de digitação.
 
@@ -29,6 +32,28 @@ OBS2: exemplo de funcionamento com base nas inserções:
 "uva" e "morango": deve exibir a terceira mensagem (b3)
  -->
 
- <span>Primeira palavra</span>
-</body>
+    <span>Primeira palavra</span>
+    <input type="text" id="ipt_p1" />
+
+    <span>Segunda palavra</span>
+    <input type="text" id="ipt_p2" />
+
+    <button onclick="analisar()">Analisar</button>
+    <div id="div_exibir"></div>
+  </body>
 </html>
+
+<script>
+  function analisar() {
+    let p1 = ipt_p1.value;
+    let p2 = ipt_p2.value;
+
+    if (p1 == p2) {
+      div_exibir.innerHTML = `As palavras ${p1} e ${p2} são exatamente iguais!`;
+    } else if (p1.toUpperCase() == p2.toUpperCase()) {
+      div_exibir.innerHTML = `As palavras ${p1} e ${p2} possuem o mesmo conteúdo, mas a digitação é diferente`;
+    } else {
+      div_exibir.innerHTML = `As palavras ${p1} e ${p2} são completamente diferentes!`;
+    }
+  }
+</script>
