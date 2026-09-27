@@ -39,37 +39,41 @@
     let valor = Number(select_combu.value);
     let qtdVend = Number(ipt_qtdVend.value);
     let hora = Number(ipt_hora.value);
-    ordem += 1;
-    let recebido = qtdVend * valor
-    acumuloRec += recebido;
+    let recebido = qtdVend * valor;
     let desconto = 0;
+    ordem += 1;
 
     if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 6.49) {
-      desconto = valor * 0.0505;
+      desconto = qtdVend * valor * 0.0505;
       valor = valor - desconto;
       acumuloGasolina += qtdVend;
-      
       acumuloDes += desconto;
-    } else if(valor == 6.49){
+      acumuloRec += recebido - desconto;
+    } else if (valor == 6.49) {
       acumuloGasolina += qtdVend;
+      acumuloRec += recebido;
     }
 
     if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 4.44) {
-       desconto = valor * 0.048;
+      desconto = qtdVend * valor * 0.048;
       valor = valor - desconto;
       acumuloEtanol += qtdVend;
       acumuloDes += desconto;
-    }else if(valor == 4.44){
+      acumuloRec += recebido - desconto;
+    } else if (valor == 4.44) {
       acumuloEtanol += qtdVend;
+      acumuloRec += recebido;
     }
 
-     if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 4.39) {
-     desconto = valor * 0.0303;
+    if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 4.39) {
+      desconto = qtdVend * valor * 0.0303;
       valor = valor - desconto;
       acumuloDiesel += qtdVend;
       acumuloDes += desconto;
-    } else if(valor == 4.39){
+      acumuloRec += recebido - desconto;
+    } else if (valor == 4.39) {
       acumuloDiesel += qtdVend;
+      acumuloRec += recebido;
     }
 
     div_exibir.innerHTML = `Venda ${ordem}ª – Valor Recebido = R$ ${recebido.toFixed(2)} – Desconto Concedido = R$ ${desconto.toFixed(2)} <br>
@@ -80,8 +84,13 @@
   }
 
   function encerrar() {
+    let total = acumuloDiesel + acumuloEtanol + acumuloGasolina
+    let PorcGas = acumuloGasolina * 100 / total
+    let PorDie = acumuloDiesel * 100 / total
+    let PorEta = acumuloEtanol * 100 / total
     div_exibir.innerHTML = ` `;
     div_exibir.innerHTML = `Resumo do Faturamento <br>
+
 
 Valor Total Recebido = R$ ${acumuloRec.toFixed(2)}<br>
 
@@ -89,11 +98,11 @@ Valor Total dos Descontos = R$ ${acumuloDes.toFixed(2)}<br>
 
  
 
-Quantidade de Gasolina Vendida = ${acumuloGasolina.toFixed(2)} <br>
+Quantidade de Gasolina Vendida = ${acumuloGasolina.toFixed(2)} == ${PorcGas.toFixed(2)}% <br>
 
-Quantidade de Etanol Vendida = ${acumuloEtanol.toFixed(2)} <br>
+Quantidade de Etanol Vendida = ${acumuloEtanol.toFixed(2)} == ${PorEta.toFixed(2)}% <br>
 
-Quantidade de Diesel Vendida = ${acumuloDiesel.toFixed(2)}  `;
+Quantidade de Diesel Vendida = ${acumuloDiesel.toFixed(2)} == ${PorDie.toFixed(2)}% `;
   }
 
   {
