@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GASOLINA</title>
   </head>
   <body>
     <span>Combustivel</span>
     <select id="select_combu">
       <option value="6.49">GASOLINA</option>
-      <option value="4.44">ETANO</option>
+      <option value="4.44">ETANOL</option>
       <option value="4.39">DIESEL</option>
     </select>
 
@@ -31,81 +31,71 @@
   let ordem = 0;
   let acumuloRec = 0;
   let acumuloDes = 0;
-  let acumuloEtanol = 0
-  let acumuloGasolina = 0
-  let acumuloDiesel = 0
+  let acumuloEtanol = 0;
+  let acumuloGasolina = 0;
+  let acumuloDiesel = 0;
 
   function analisar() {
-    let tipo = Number(select_combu.value);
+    let valor = Number(select_combu.value);
     let qtdVend = Number(ipt_qtdVend.value);
     let hora = Number(ipt_hora.value);
     ordem += 1;
-    acumuloRec += qtdVend * tipo;
+    let recebido = qtdVend * valor
+    acumuloRec += recebido;
     let desconto = 0;
-     acumuloDes += desconto;
-    
 
-    if ((qtdVend >= 20 && (hora >= 21 || hora <= 6) && tipo == 6.49)) {
-      tipo = tipo - tipo * 0.0505;
-      desconto = tipo * 0.0505;
-      acumuloGasolina += qtdVend
-    }else if(tipo == 6.49){
-        acumuloGasolina += qtdVend
-    }else
-
-     if ((qtdVend >= 20 && (hora >= 21 || hora <= 6) && tipo == 4.44)) {
-      tipo = tipo - tipo * 0.048;
-      desconto = tipo * 0.048;
-      acumuloEtanol += qtdVend
-
-    } else if(tipo == 4.44){
-         acumuloEtanol += qtdVend
-    }else
-    
-    
-    if ((qtdVend >= 20 && (hora >= 21 || hora <= 6) && tipo == 4.39)){
-      tipo = tipo - tipo * 0.0303;
-      desconto = tipo * 0.0303;
-      acumuloDiesel += qtdVend
-    }else if(tipo == 4.39){
-         acumuloDiesel += qtdVend
+    if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 6.49) {
+      desconto = valor * 0.0505;
+      valor = valor - desconto;
+      acumuloGasolina += qtdVend;
+      
+      acumuloDes += desconto;
+    } else if(valor == 6.49){
+      acumuloGasolina += qtdVend;
     }
 
+    if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 4.44) {
+       desconto = valor * 0.048;
+      valor = valor - desconto;
+      acumuloEtanol += qtdVend;
+      acumuloDes += desconto;
+    }else if(valor == 4.44){
+      acumuloEtanol += qtdVend;
+    }
 
-  
+     if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 4.39) {
+     desconto = valor * 0.0303;
+      valor = valor - desconto;
+      acumuloDiesel += qtdVend;
+      acumuloDes += desconto;
+    } else if(valor == 4.39){
+      acumuloDiesel += qtdVend;
+    }
 
-    div_exibir.innerHTML = `Venda ${ordem}ª – Valor Recebido = R$ ${qtdVend * tipo} – Desconto Concedido = R$ ${desconto} <br>
- – Acumulado dos Recebimentos= R$ ${acumuloRec} - <br>
-  Acumulado dos Descontos = R$ ${acumuloDes}
+    div_exibir.innerHTML = `Venda ${ordem}ª – Valor Recebido = R$ ${recebido.toFixed(2)} – Desconto Concedido = R$ ${desconto.toFixed(2)} <br>
+ – Acumulado dos Recebimentos= R$ ${acumuloRec.toFixed(2)} - <br>
+  Acumulado dos Descontos = R$ ${acumuloDes.toFixed(2)}
 
  `;
-
-
   }
 
- 
+  function encerrar() {
+    div_exibir.innerHTML = ` `;
+    div_exibir.innerHTML = `Resumo do Faturamento <br>
 
- function encerrar(){
+Valor Total Recebido = R$ ${acumuloRec.toFixed(2)}<br>
 
-div_exibir.innerHTML = ` `
-div_exibir.innerHTML = `Resumo do Faturamento <br>
-
-Valor Total Recebido = R$ ${acumuloRec}<br>
-
-Valor Total dos Descontos = R$ ${acumuloDes}<br>
+Valor Total dos Descontos = R$ ${acumuloDes.toFixed(2)}<br>
 
  
 
-Quantidade de Gasolina Vendida = ${acumuloGasolina} <br>
+Quantidade de Gasolina Vendida = ${acumuloGasolina.toFixed(2)} <br>
 
-Quantidade de Etanol Vendida = ${acumuloEtanol} <br>
+Quantidade de Etanol Vendida = ${acumuloEtanol.toFixed(2)} <br>
 
-Quantidade de Diesel Vendida = ${acumuloDiesel}  `
+Quantidade de Diesel Vendida = ${acumuloDiesel.toFixed(2)}  `;
+  }
 
- }
-
-{
-
-
+  {
   }
 </script>
