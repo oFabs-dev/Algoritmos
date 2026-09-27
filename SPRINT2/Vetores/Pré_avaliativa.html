@@ -34,21 +34,29 @@
   let acumuloEtanol = 0;
   let acumuloGasolina = 0;
   let acumuloDiesel = 0;
+  
+ 
 
   function analisar() {
     let valor = Number(select_combu.value);
     let qtdVend = Number(ipt_qtdVend.value);
     let hora = Number(ipt_hora.value);
-    let recebido = qtdVend * valor;
     let desconto = 0;
+
+       if (ordem === 0) {
+      div_exibir.innerHTML = " ";
+    }
+
     ordem += 1;
+    let recebido = qtdVend * valor;
+   
 
     if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 6.49) {
       desconto = qtdVend * valor * 0.0505;
-      valor = valor - desconto;
       acumuloGasolina += qtdVend;
       acumuloDes += desconto;
       acumuloRec += recebido - desconto;
+      recebido -= desconto
     } else if (valor == 6.49) {
       acumuloGasolina += qtdVend;
       acumuloRec += recebido;
@@ -56,10 +64,10 @@
 
     if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 4.44) {
       desconto = qtdVend * valor * 0.048;
-      valor = valor - desconto;
       acumuloEtanol += qtdVend;
       acumuloDes += desconto;
       acumuloRec += recebido - desconto;
+      recebido -= desconto
     } else if (valor == 4.44) {
       acumuloEtanol += qtdVend;
       acumuloRec += recebido;
@@ -67,18 +75,17 @@
 
     if (qtdVend >= 20 && (hora >= 21 || hora <= 6) && valor == 4.39) {
       desconto = qtdVend * valor * 0.0303;
-      valor = valor - desconto;
       acumuloDiesel += qtdVend;
       acumuloDes += desconto;
       acumuloRec += recebido - desconto;
+      recebido -= desconto
     } else if (valor == 4.39) {
       acumuloDiesel += qtdVend;
       acumuloRec += recebido;
     }
-
-    div_exibir.innerHTML = `Venda ${ordem}ª – Valor Recebido = R$ ${recebido.toFixed(2)} – Desconto Concedido = R$ ${desconto.toFixed(2)} <br>
+    div_exibir.innerHTML += `Venda ${ordem}ª – Valor Recebido = R$ ${recebido.toFixed(2)} – Desconto Concedido = R$ ${desconto.toFixed(2)} <br>
  – Acumulado dos Recebimentos= R$ ${acumuloRec.toFixed(2)} - <br>
-  Acumulado dos Descontos = R$ ${acumuloDes.toFixed(2)}
+  Acumulado dos Descontos = R$ ${acumuloDes.toFixed(2)} <br>
 
  `;
   }
@@ -103,8 +110,14 @@ Quantidade de Gasolina Vendida = ${acumuloGasolina.toFixed(2)} == ${PorcGas.toFi
 Quantidade de Etanol Vendida = ${acumuloEtanol.toFixed(2)} == ${PorEta.toFixed(2)}% <br>
 
 Quantidade de Diesel Vendida = ${acumuloDiesel.toFixed(2)} == ${PorDie.toFixed(2)}% `;
+
+ordem = 0;
+acumuloRec = 0;
+acumuloDes = 0;
+acumuloGasolina = 0;
+acumuloEtanol = 0;
+acumuloDiesel = 0;
+
   }
 
-  {
-  }
 </script>
