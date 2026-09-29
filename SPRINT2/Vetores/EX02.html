@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2. Diário de Viagens: Do Primeiro ao Último Destino
+Crie um programa o qual: 
+a) Tenha um campo "Destino de viagem" e um botão "Adicionar";
+
+b) Ao clicar no botão, esse destino deve ser adicionado a uma lista (que não aparece para o usuário). 
+
+Obs: Não existe problema em serem registrados valores repetidos.
+
+c) Devem haver os botões: 
+
+  "Primeira viagem" - Ao ser clicado, aparece abaixo o primeiro local cadastrado 
+  ou "Ainda não viajou" - caso nenhuma (zero viagens) viagem tenha sido registrada;
+
+  "Terceira viagem" - Ao ser clicado, aparece abaixo o terceiro local cadastrado 
+  ou "Ainda fez a terceira viagem", caso não tenha feito, ao menos, três viagens;
+
+  "Última viagem" - Ao ser clicado, aparece abaixo o último local cadastrado ou
+   "Ainda não viajou", caso nenhuma (zero viagens) viagem tenha sido registrada. -->
+
+   <span>Destino da viagem</span>
+   <input type="text" id="ipt_viagem">
+
+   <button onclick="add()">Adicionar</button> <br>
+
+   <button onclick="primeira()">Primeira viagem</button>
+     <button onclick="terceira()">Terceira viagem</button>
+       <button onclick="ultima()">Última viagem</button>
+
+       <div id="div_exibir"></div>
+</body>
+</html>
+
+
+<script>
+let viagem = []
+
+function add(){
+let viagemAdd = ipt_viagem.value
+viagem.push(viagemAdd)
+}
+
+
+function primeira(){
+
+if(viagem == 0){
+div_exibir.innerHTML = `zero viagens`
+}else{
+div_exibir.innerHTML = `${viagem[0]}`
+}
+}
+
+function ultima(){
+div_exibir.innerHTML = `${viagem[viagem.length - 1]}`
+}
+
+
+function terceira(){
+div_exibir.innerHTML = `${viagem[2]}`
+}
+
+</script>

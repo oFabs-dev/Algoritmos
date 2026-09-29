@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 6. Observador de Índices
+
+Crie um programa o qual: 
+
+a) Solicite uma frase qualquer ao usuário 
+
+b) Solicite o número de qual letra 
+o usuário deseja ver (por exemplo, 3ª letra, 5ª letra)
+
+c) Enquanto ele digita, abaixo deve aparecer uma frase como esta: 
+
+    A primeira letra é: AA
+
+    A XXª letra é: BB
+
+    A última letra é: CC
+
+Onde XX é a posição informada pelo usuário, AA é a primeira letra da frase, 
+BB é a letra da frase que está na posição informada e CC a letra final da frase.
+
+ -->
+
+ <span>Escreva uma frase</span>
+ <input type="text" id="ipt_frase">
+
+  <span>Qual posição quer ver?</span>
+ <input type="text" id="ipt_letra" oninput="ver()">
+
+
+ <div id="div_exibir"></div>
+
+</body>
+</html>
+
+
+<script>
+
+function ver(){
+let frase = ipt_frase.value
+let letra = Number(ipt_letra.value) 
+let tamanho = frase.length
+let primeira = frase[0]
+let ultima = frase[frase.length - 1]
+let FraseLetra = frase[letra]
+
+
+div_exibir.innerHTML = ` A primeira letra é: ${primeira} <br>
+
+    A ${[letra]}ª letra é: ${FraseLetra} <br>
+
+
+    A última letra é: ${ultima}`
+
+
+}
+</script>
