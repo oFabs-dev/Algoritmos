@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 12. Papagaio Repetitivo
+Crie um programa o qual:
+
+a) Pergunte ao usuário um número  
+
+b) Pergunte ao usuário uma frase
+
+c) Ao clicar num botão "Papagaio Repetitivo", repita a frase informada, exibindo o número da frase atual e
+ a frase repetida a cada fala, como abaixo: 
+
+     1 - oi
+     2 - oi oi
+     3 - oi oi oi
+     4 - oi oi oi oi
+     ... última frase, repetindo N vezes a frase
+
+ -->
+
+ <span>Numero</span>
+ <input type="text" id="ipt_num">
+
+ <span>Frase</span>
+ <input type="text" id="ipt_frase">
+
+ <button onclick="exibir()">Papagaio Repetitivo</button>
+
+<div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+
+function exibir(){
+let contar = 0
+let num = Number(ipt_num.value)
+let frase = ipt_frase.value
+
+while(num != contar){
+    contar ++
+    div_exibir.innerHTML += `${contar} - ${frase.repeat(contar)} <br>`
+}
+}
+</script>

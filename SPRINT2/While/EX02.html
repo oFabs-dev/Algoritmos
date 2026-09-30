@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2. Frase Repetitiva
+Crie um programa o qual: 
+ 
+a) Tenha um botão "Diga algo sobre a matéria de Algoritmos";  
+
+b) Ao clicar nele,
+mostre na própria página 7 vezes uma frase a sua escolha, 
+uma abaixo da outra.
+
+OBS:  sem input, sugiro criar uma variável para com uma mensagem fixa.   -->
+
+<button onclick="exibir()">Diga algo sobre a matéria de Algoritmos</button>
+
+<div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+
+function exibir(){
+let mensagem = `JP E FERNANDO SÃO O MELHORES PROFESSORES DE ALGORITMOS`
+let contar = 0
+
+while(contar < 7){
+    div_exibir.innerHTML += `${mensagem} <br>`
+    contar ++
+}
+}
+</script>

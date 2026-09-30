@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 13. Papagaio Falante
+Crie um programa o qual:
+
+a) Pergunte ao usuário um número  
+
+b) Pergunte ao usuário uma frase  
+
+c) Ao clicar num botão "Papagaio", a frase é exibida N vezes em N alerts, onde N é o número informado em a)
+
+OBS: ao digitar "oi" e "2", devem aparecer 2 alertas, escritos "oi oi"
+
+OBS2: é recomendado utilizar a tecla "enter" para fechar o alerta ao invés de clicar com o mouse, pois cliques sucessivos em alertas podem gerar bugs.1 -->
+
+
+
+ <span>Numero</span>
+ <input type="text" id="ipt_num">
+
+ <span>Frase</span>
+ <input type="text" id="ipt_frase">
+
+ <button onclick="exibir()">Papagaio Repetitivo</button>
+
+<div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+
+function exibir(){
+let contar = 0
+let num = Number(ipt_num.value)
+let frase = ipt_frase.value
+
+while(num != contar){
+    contar ++
+    alert(`${frase.repeat(num)}`)
+}
+}
+
+</script>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 4. Expressar amor
+Crie um programa o qual:
+
+a) Pergunte o nome da pessoa que o usuário mais ama na vida
+
+b) Pergunte o quanto o usuário a ama (um número inteiro)
+
+c) Ao clicar num botão "Expressar amor", devem aparecer, abaixo dele, N vezes (conforme o valor em b))
+ a frase indicada em a), como neste exemplo (considerando o nome "Lady Gaga" e que ama "3")   
+
+      1 - Lady Gaga, eu te amo! Sempre lembre disso!   
+
+      2 - Lady Gaga, eu te amo! Sempre lembre disso!   
+
+      3 - Lady Gaga, eu te amo! Sempre lembre disso!    -->
+
+    <span>Pessoa que você mais ama</span>
+    <input type="text" id="ipt_pessoa" />
+
+    <span>O quanto você ama?</span>
+    <input type="text" id="ipt_amor" />
+
+    <button onclick="expressar()">Expressar amor</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+
+function expressar(){
+let pessoa = ipt_pessoa.value
+let amor = ipt_amor.value
+let contar = 0
+
+while(contar != amor){
+    contar ++
+    div_exibir.innerHTML += ` ${contar} - ${pessoa}, eu te amo! Sempre lembre disso!<br> `
+}
+}
+</script>

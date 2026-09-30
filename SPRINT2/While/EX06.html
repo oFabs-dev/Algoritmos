@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 6. Filtro de Números Cabalísticos
+Crie um programa o qual:
+
+a) Ao clicar num botão "Filtrar números Cabalísticos"...   
+
+c) Exiba, debaixo do botão, os números de 1 a 30, um embaixo do outro, PORÉM, NÃO devem aparecer os números 3, 4, 7, 10 e 12.
+
+OBS: não se atenha ao termo "cabalístico", o que importa é somente travar essa sequência de números citada. -->
+
+    <button onclick="exibir()">Filtrar números Cabalísticos</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let contar = 0;
+
+    while ((contar != 30)) {
+      contar++;
+      if (
+        contar == 3 ||
+        contar == 4 ||
+        contar == 7 ||
+        contar == 10 ||
+        contar == 12
+      ) {
+        div_exibir.innerHTML += ``;
+      } else {
+        div_exibir.innerHTML += `${contar}<br>`;
+      }
+    }
+  }
+</script>

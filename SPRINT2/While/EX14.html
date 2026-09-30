@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 14. Divisibilidade  
+Crie um programa o qual:
+
+a) Solicite um intervalo crescente de valores numéricos
+
+b) Solicite um número para teste de divisibilidade, ele tem que estar entre 3 e 13   
+
+c) Ao clicar num botão "Divisível"...   
+
+c) Exiba, debaixo do botão, todos os números contidos no intervalo do item a que NÃO são divisíveis pelo número do item b.
+
+OBS: ao informar '1 a 10' no intervalo e informar '3' no divisor, deve exibir todos os números, exceto os múltiplos de 3 (como 3, 6 e 9). -->
+
+    <span>Intervalo crescente de valores numéricos</span>
+    <input type="text" id="ipt_num" />
+
+    <span>Número para teste de divisibilidade</span>
+    <input type="text" id="ipt_div" />
+
+    <button onclick="exibir()">Divisível</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let contar = 0;
+    let num = Number(ipt_num.value);
+    let div = Number(ipt_div.value);
+    while (contar != num) {
+      contar++;
+      if (contar % div == 0) {
+        div_exibir.innerHTML += ` `;
+      } else {
+        div_exibir.innerHTML += `${contar}`;
+      }
+    }
+  }
+
+  -- arrumar
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  3. Frase Numerada
+Refaça o programa anterior de tal forma que, antes de cada frase apareça um contador. Ex: Se a frase digitada foi “Boa Tarde” a página ficará assim:   
+
+   1. Boa tarde   
+
+   2. Boa tarde   
+
+   ...   
+
+   7. Boa tarde  -->
+
+<button onclick="exibir()">Bom dia</button>
+
+<div id="div_exibir"></div>
+
+
+</body>
+</html>
+
+<script>
+   
+function exibir(){
+let mensagem = ` É Boa tarde`
+let contar = 0
+
+while(contar < 7){
+    div_exibir.innerHTML += `${contar + 1}. ${mensagem} <br>`
+    contar ++
+}
+}
+
+</script>
