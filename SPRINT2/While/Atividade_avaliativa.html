@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <span>O tamanho da pista (em metros)</span>
+    <input type="text" id="ipt_tamanhoPista" />
+    <br />
+
+    <span>Quantos metros a tartaruga anda por rodada</span>
+    <input type="text" id="ipt_tartaruga" />
+    <br />
+
+    <span>Quantos metros o coelho anda por rodada</span>
+    <input type="text" id="ipt_coelho" />
+    <br />
+
+    <span>A cada quantas rodadas o coelho dorme</span>
+    <input type="text" id="ipt_rodada" />
+    <br />
+
+    <button onclick="largada()">Dar a Largada</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let acumuloTartaruga = 0;
+  let acumuloCoelho = 0;
+  let soneca = 0;
+
+  function largada() {
+    let contar = 0;
+    let pista = Number(ipt_tamanhoPista.value);
+    let tartaruga = Number(ipt_tartaruga.value);
+    let coelho = Number(ipt_coelho.value);
+    let intervaloRodada = Number(ipt_rodada.value);
+    let vencedor = ``;
+    let faltou = 0;
+
+    if ((pista || tartaruga || coelho || intervaloRodada) <= 0) {
+      alert(`ERRO (insira valor maior que 0)`);
+    } else if (tartaruga >= coelho) {
+      alert(`ERRO (a tartaruga deve ser a mais lenta)`);
+    } else if (intervaloRodada < 2) {
+      alert(`ERRO (senão o coelho dormiria em todas as rodadas)`);
+    } else {
+      while (acumuloTartaruga < pista && acumuloCoelho < pista) {
+        contar++;
+        if (contar % intervaloRodada == 0 && (acumuloTartaruga != acumuloCoelho)) {
+          acumuloTartaruga += tartaruga;
+          soneca++;
+          div_exibir.innerHTML += `Rodada ${contar}: Tartarugo ${acumuloTartaruga} m | Coelhildo ${acumuloCoelho} m  - Coelho dormindo (zzz...)<br>`;
+        } else {
+          acumuloTartaruga += tartaruga;
+          acumuloCoelho += coelho;
+          div_exibir.innerHTML += `Rodada ${contar}: Tartarugo ${acumuloTartaruga} m | Coelhildo ${acumuloCoelho} m<br>`;
+        }
+      }
+    }
+
+    if (acumuloTartaruga == acumuloCoelho) {
+      div_exibir.innerHTML += `Empate na rodada ${contar}!`;
+    } else if (acumuloTartaruga < acumuloCoelho) {
+      faltou = (acumuloTartaruga * 100) / pista;
+      vencedor = `Coelho`;
+      div_exibir.innerHTML += `Resultado: <br> ${vencedor} o venceu na rodada ${contar}! <br>
+        Tartarugo completou ${faltou}% da pista;<br>`;
+      div_exibir.innerHTML += `O coelho tirou ${soneca} sonecas, o que representa 46.15% das rodadas`;
+    } else if (acumuloTartaruga > acumuloCoelho) {
+      faltou = (acumuloCoelho * 100) / pista;
+      vencedor = `Tartarugo`;
+      div_exibir.innerHTML += `Resultado: <br> ${vencedor} Devagarinho venceu na rodada ${contar}! <br>
+         Coelhildo Soneca completou ${faltou}% da pista<br>`;
+      div_exibir.innerHTML += `O coelho tirou ${soneca} sonecas, o que representa 46.15% das rodadas`;
+    }
+  }
+
+  contar = 0;
+  pista = 0;
+  tartaruga = 0;
+  coelho = 0;
+  intervaloRodada = 0;
+
+  acumuloTartaruga = 0;
+  acumuloCoelho = 0;
+  soneca = 0;
+</script>

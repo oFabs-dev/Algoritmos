@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 15. É tri/penta!
+Crie um programa o qual:
+
+a) Deve ter dois campos para o usuário informar o intervalo crescente de números
+
+b) Deve ter um botão chamado "Curto 3 e 5!"
+
+c) Ao clicar nesse botão, devem aparecer QUASE todos os números entre o intervalo informado, porém...
+
+d) Se o número for múltiplo de 3, ao invés do número exiba "É TRI!". Se o número for múltiplo de 5, 
+ao invés do número exiba "É PENTA!". Se o número for múltiplo de 3 e também de 5, ao invés do número exiba "É TRI!É PENTA!".
+
+ -->
+
+    <span> Defina um intervalo crescente </span>
+
+    <input type="text" id="ipt_num1" />
+    <input type="text" id="ipt_num2" />
+
+    <button onclick="exibir()">Curto 3 e 5!</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function exibir() {
+    let num1 = Number(ipt_num1.value);
+    let num2 = Number(ipt_num2.value);
+
+    while (num1 <= num2) {
+      if (num1 % 3 == 0 && num1 % 5 == 0) {
+        div_exibir.innerHTML += `É TRI! É PENTA!<br>`;
+      } else if (num1 % 5 == 0) {
+        div_exibir.innerHTML += `É PENTA!<br>`;
+      } else if (num1 % 3 == 0) {
+        div_exibir.innerHTML += `É TRI!<br>`;
+      } else {
+        div_exibir.innerHTML += `${num1}<br>`;
+      }
+
+      num1++;
+    }
+  }
+</script>
