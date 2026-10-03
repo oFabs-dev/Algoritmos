@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 17. Um elefante, incomoda muita gente...
 No filme clássico "Ghost, do outra lado da vida", o protagonista, para atazanar a vida da médium canta a seguinte canção...   
 
@@ -31,32 +31,28 @@ seguido do trecho com 2 elefantes e depois 3... até a quantidade de elefantes i
 Por exemplo, o se o usuário informar 4 em a), devem aparecer 3 estrofes, como no enunciado da questão,
  de "2 elefantes" até "4 elefantes", sempre repetindo a frase do "1 elefante incomoda muita gente" antes de cada estrofe.  -->
 
- <span>Quantidade de elefantes</span>
- <input type="text" id="ipt_elefante">
+    <span>Quantidade de elefantes</span>
+    <input type="text" id="ipt_elefante" />
 
- <button onclick="incomodar()">Atazanar a médium</button>
+    <button onclick="incomodar()">Atazanar a médium</button>
 
-<div id="div_exibir"></div>
-
-</body>
+    <div id="div_exibir"></div>
+  </body>
 </html>
 
 <script>
+  function incomodar() {
+    let contar = 2;
+    let elefante = Number(ipt_elefante.value);
+    let mensagem = "incomodam,";
 
-function incomodar(){
-let contar = 0
-let elefante = Number(ipt_elefante.value)
-let mensagem = ''
+    while (contar <= elefante) {
+      mensagem += "incomodam,";
 
-while(contar <= elefante){
+      div_exibir.innerHTML += `1 elefante incomoda muita gente! <br>
+             ${contar} elefantes, ${mensagem} muito mais! <br>  <br> `;
 
-mensagem +=  'incomodam,'
-
-div_exibir.innerHTML =`1 elefante incomoda muita gente!
-             ${contar} elefantes, ${mensagem} muito mais!   `
-
-
-contar++    
-}
-}
+      contar++;
+    }
+  }
 </script>

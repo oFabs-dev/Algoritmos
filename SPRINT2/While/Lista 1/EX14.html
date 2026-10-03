@@ -19,32 +19,37 @@ c) Exiba, debaixo do botão, todos os números contidos no intervalo do item a q
 
 OBS: ao informar '1 a 10' no intervalo e informar '3' no divisor, deve exibir todos os números, exceto os múltiplos de 3 (como 3, 6 e 9). -->
 
-    <span>Intervalo crescente de valores numéricos</span>
-    <input type="text" id="ipt_num" />
+    <span>Começo do intervalo</span>
+    <input type="text" id="ipt_comeco" />
 
-    <span>Número para teste de divisibilidade</span>
-    <input type="text" id="ipt_div" />
+    <span>Fim do intervalo</span>
+    <input type="text" id="ipt_fim" />
 
-    <button onclick="exibir()">Divisível</button>
+    <span>número para teste de divisibilidade(3 a 13)</span>
+    <input type="text" id="ipt_divi" />
+
+    <button onclick="divisivel()">Divisivel</button>
 
     <div id="div_exibir"></div>
   </body>
 </html>
 
 <script>
-  function exibir() {
-    let contar = 0;
-    let num = Number(ipt_num.value);
-    let div = Number(ipt_div.value);
-    while (contar != num) {
-      contar++;
-      if (contar % div == 0) {
-        div_exibir.innerHTML += ` `;
-      } else {
-        div_exibir.innerHTML += `${contar}`;
+  function divisivel() {
+    let comeco = Number(ipt_comeco.value);
+    let fim = Number(ipt_fim.value);
+    let divisivel = Number(ipt_divi.value);
+
+    if (divisivel < 3 || divisivel > 13) {
+      alert(`ERROOO`);
+    }
+
+    while (comeco <= fim) {
+      if (comeco % divisivel != 0) {
+        div_exibir.innerHTML += `${comeco}<br>`;
       }
+
+      comeco++;
     }
   }
-
-  -- arrumar
 </script>

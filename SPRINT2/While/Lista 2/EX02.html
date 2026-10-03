@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 16. Treino de Musculação
 Crie um programa o qual:
 
@@ -36,31 +36,28 @@ O Dia 1 sempre é de "Musculação"
 Considere que, nesse exemplo acima, o usuário informou 3 no item a)   
  -->
 
- <span>Quantos em quantos dias o usuário faz musculação </span>
-<input type="text" id="ipt_dias">
+    <span>Quantos em quantos dias o usuário faz musculação </span>
+    <input type="text" id="ipt_dias" />
 
-<button onclick="exibir()">Exibir rotina mensal</button>
+    <button onclick="exibir()">Exibir rotina mensal</button>
 
-<div id="div_exibir"></div>
-
-</body>
+    <div id="div_exibir"></div>
+  </body>
 </html>
 
 <script>
-function exibir(){
-let contar = 1
-let dias = Number(ipt_dias.value)
+  function exibir() {
+    let contar = 1;
+    let dias = Number(ipt_dias.value);
 
+    while (contar <= 30) {
+      if (contar % dias == 1) {
+        div_exibir.innerHTML += `Dia ${contar} - Musculação<br>`;
+      } else {
+        div_exibir.innerHTML += `Dia ${contar} - Comer, dormir etc<br>`;
+      }
 
-while(contar <= 30){
-if(contar % dias == 1){
-    div_exibir.innerHTML += `Dia ${contar} - Musculação<br>`
-}else{
-    div_exibir.innerHTML += `Dia ${contar} - Comer, dormir etc<br>`
-}
-
-contar ++
-}
-
-}
+      contar++;
+    }
+  }
 </script>
