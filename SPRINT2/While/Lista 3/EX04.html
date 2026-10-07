@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 21. Contagem dos Múltiplos
+Crie  um programa o qual:
+
+a) Receba um número positivo do usuário, que é o limite da contagem;
+
+b) Receba um segundo número, para testes de divisibilidade, que deve estar entre 1 e o número informado em a);
+
+c) Ao clicar em "Somar Números", deve exibir todos os números múltiplos do número informado em b) 
+ entre 1 e o número informado em a); 
+
+d) Ao final da contagem, exiba a frase "Soma dos Múltiplos: X", 
+sendo X a soma de todos os números múltiplos do número informado pelo usuário -->
+
+    <span>Numero(limite)</span>
+    <input type="text" id="ipt_num" />
+
+    <span>Teste de divisibilidade</span>
+    <input type="text" id="ipt_divisivel" />
+
+    <button onclick="somar()">Somar Números</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let somaMultiplos = 0;
+
+  function somar() {
+    let num = Number(ipt_num.value);
+    let div = Number(ipt_divisivel.value);
+    let contar = 1;
+
+    div_exibir.innerHTML = ` `;
+
+    if (num <= 0 || div < 1 || div > num) {
+      alert(`ERROOO`);
+    } else {
+      while (contar <= num) {
+        if (contar % div == 0) {
+          div_exibir.innerHTML += `${contar}<br> <br>`;
+          somaMultiplos += contar;
+        }
+        contar++;
+      }
+    }
+
+    div_exibir.innerHTML += `Soma dos Múltiplos: ${somaMultiplos}`;
+
+    somaMultiplos = 0;
+  }
+</script>

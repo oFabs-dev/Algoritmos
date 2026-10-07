@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Distância inicial semanal do aluno (em km)
+    <input type="text" id="ipt_distInicial" /> <br />
+    O percentual de aumento semanal desejado (de 0 a 100)
+    <input type="text" id="ipt_porcDesejo" /> <br />
+    A meta de distância semanal (em km)
+    <input type="text" id="ipt_metaSemanal" /> <br />
+    O número máximo de semanas do plano
+    <input type="text" id="ipt_semanaMax" /> <br />
+
+    <button onclick="meta()">Gerar Planilha</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let acumuloKm = 0;
+
+  function meta(){
+    let distInicial = Number(ipt_distInicial.value);
+    let porcDesejo = Number(ipt_porcDesejo.value);
+    let metaSemanal = Number(ipt_metaSemanal.value);
+    let semanaMax = Number(ipt_semanaMax.value);
+    let semMin = 1;
+    let porcMeta = 0;
+    acumuloKm += distInicial;
+    let kmDescanso = 0;
+    let PorcDescanso = 0;
+
+    if (distInicial <= 0) {
+      alert(`meta inicial menor que 0??`);
+    } else if (porcDesejo < 1 || porcDesejo > 10) {
+      alert(`Não pode mais que 10 ou menor 0`);
+    } else if (metaSemanal <= distInicial) {
+      alert(`meta invalida`);
+    } else if (semanaMax < 1 || semanaMax > 24) {
+      alert(`meta semanal invalida`);
+    } else {
+      while (semMin <= semanaMax ) {
+        if (semMin % 4 == 0) {
+            kmDescanso = acumuloKm - acumuloKm * 0.3;
+            porcDescanso = (kmDescanso * 100) / metaSemanal;
+            
+            div_exibir.innerHTML += `Semana ${semMin} - ${kmDescanso.toFixed(2)} km (${porcDescanso.toFixed(2)}% da meta) descanso <br>`;
+            semMin++;
+        } else {
+            
+            porcMeta = (acumuloKm * 100) / metaSemanal;
+            
+            div_exibir.innerHTML += `Semana ${semMin} - ${acumuloKm.toFixed(2)} km (${porcMeta.toFixed(2)}% da meta) <br>`;
+            acumuloKm = acumuloKm + (acumuloKm * 0.1);
+            semMin++;
+        }
+
+        
+
+       
+      }
+
+       div_exibir.innerHTML += `Meta de ${metaSemanal} km atingida na semana ${semMin}! Total acumulado no plano: ${acumuloKm} km <br>`;
+    }
+  }
+</script>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Quantidades de doce a ser vendida</h1>
+
+    <span>Quantidade Macarons</span>
+    <input type="text" id="ipt_macarons" />
+    <span>Preço da unidade</span>
+    <input type="text" id="ipt_precoMaca" />
+    <br />
+
+    <span>Quantidade Brigadeiros</span>
+    <input type="text" id="ipt_Brigadeiros" />
+    <span>Preço da unidade</span>
+    <input type="text" id="ipt_precoBrig" />
+    <br />
+
+    <span>Quantidade Cupcakes</span>
+    <input type="text" id="ipt_Cupcakes" />
+    <span>Preço da unidade</span>
+    <input type="text" id="ipt_precoCup" />
+    <br />
+
+    <span>Quantidade Cheesecakes</span>
+    <input type="text" id="ipt_Cheesecakes" />
+    <span>Preço da unidade</span>
+    <input type="text" id="ipt_precoChee" />
+    <br />
+
+    <button onclick="verificar()">Verificar Vendas</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let qtdMac = Number(ipt_macarons.value);
+    let qtdBrig = Number(ipt_Brigadeiros.value);
+    let qtdCup = Number(ipt_Cupcakes.value);
+    let qtdChee = Number(ipt_Cheesecakes.value);
+    let preMac = Number(ipt_precoMaca.value);
+    let preBrig = Number(ipt_precoBrig.value);
+    let preCup = Number(ipt_precoCup.value);
+    let preChee = Number(ipt_precoChee.value);
+    let contar = 1;
+
+    if (
+      qtdMac < 0 ||
+      qtdBrig < 0 ||
+      qtdCup < 0 ||
+      qtdChee < 0 ||
+      preMac < 0 ||
+      preBrig < 0 ||
+      preCup < 0 ||
+      preChee < 0
+    ) {
+      alert("Não pode negativo!!!!");
+    }
+
+    if (qtdMac > 0) {
+      while (contar <= qtdMac) {
+        div_exibir.innerHTML += `venda ${contar} - <img style="height: fit-content;width: 2cm;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6Zn5XAmBU2XViHpsu36tzakRhKW1upj96DXcmF7VxxQ&s=10"> - R$${preMac} <br>`;
+        contar++;
+      }
+    }
+    contar = 0;
+
+    if (qtdBrig > 0) {
+      while (contar <= qtdBrig) {
+        div_exibir.innerHTML += ` venda ${contar} -  <img style="height: fit-content;width: 2cm;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMKPMUyNXrhdAKmav5q__IWvdvJ_ld9SLOIqL7YmPYCg&s=10"> - R$${preBrig} <br>`;
+        contar++;
+      }
+
+      contar = 0;
+    }
+
+    if (qtdCup > 0) {
+      while (contar <= qtdCup) {
+        div_exibir.innerHTML += `venda ${contar} - <img style="height: fit-content;width: 2cm;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTKHY59O751agBpFQ_MlaUE25yZ-yWYHBHQHt3BSGrow&s=10"> - R$${preCup} <br>`;
+        contar++;
+      }
+    }
+
+    contar = 0;
+
+    if (qtdChee > 0) {
+      while (contar <= qtdChee) {
+        div_exibir.innerHTML += `venda ${contar} - <img style="height: fit-content;width: 2cm;"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZR8FE7d8XRcSyv-j_Cv_fx_9xB7Iim_uILA1MBs7R8Q&s=10">
+   - R$${preChee} <br>`;
+     contar++;
+      }
+    }
+
+    let totalVenda =
+      qtdMac * preMac + qtdBrig * preBrig + qtdCup * preCup + qtdChee * preChee;
+    let PorcMac = (qtdMac * preMac * 100) / totalVenda;
+    let PorcBrig = (qtdBrig * preBrig) / totalVenda;
+    let PorcCup = (qtdCup * preCup) / totalVenda;
+    let PorcChee = (qtdChee * preChee) / totalVenda;
+
+    div_exibir.innerHTML += `Com a quantidade de ${qtdMac} Macarons (${PorcMac}% do total), <br>
+     ${qtdBrig} Brigadeiros (${PorcBrig}% do total), <br>
+     ${qtdCup} Cupcakes (${PorcCup}% do total) <br> 
+     e ${qtdChee} Cheesecakes (${PorcChee}% do total), <br>
+      a venda totalizará R$${totalVenda}"`;
+  }
+</script>

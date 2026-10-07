@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Crie um programa no qual:  
+a) O usuário informa quantos depósitos ele fez no banco.
+b) O usuário informa o valor de cada depósito, pois ele sempre depositava exatamente o mesmo valor.
+c) O usuário informa a cada quantos meses o bônus é aplicado. 
+d) Ao clicar em "Acompanhar grana", deve aparecer o valor, mês a mês, como neste exemplo.
+e) A cada X depósitos (informado em c) o banco dá um bônus de 1% sobre o valor acumulado após o depósito.  
+f) Somente nos meses que ganharam o "bônus", apareça uma imagem de uma estrela bem pequena 
+(reduza a imagem para ficar quase do tamanho da fonte) à direita do valor acumulado  
+
+No exemplo abaixo, o usuário informou 6 depósitos, 500 por depósito e bônus a cada 3 depósitos. Note que nos meses 3 e 6 o valor aumentou em 1% do total após o depósito e foi exibida a estrela:  
+
+    1º Mês: R$ 500.00  
+    2º Mês: R$ 1000.00  
+    3º Mês: R$ 1515.00 ⭐  
+    4º Mês: R$ 2015.00  
+    5º Mês: R$ 2515.00  
+    6º Mês: R$ 3045.15 ⭐  
+    Total guardado: R$3045.15   -->
+
+    Quantos depositos?
+    <input type="text" id="ipt_deposito" />
+    Valor de cada de depósito
+    <input type="text" id="ipt_valorCada" />
+    Cada quantos meses o bônus é aplicado
+    <input type="text" id="ipt_bonusMes" />
+
+    <button onclick="deposito()">Acompanhar grana</button>
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let acumulodeposito = 0;
+  let meses = 0;
+
+  function deposito() {
+    let qtdDeposito = Number(ipt_deposito.value);
+    let valorCada = Number(ipt_valorCada.value);
+    let bonusMes = Number(ipt_bonusMes.value);
+
+    div_exibir.innerHTML = ``;
+
+    while (meses < qtdDeposito) {
+      ++meses;
+
+      if (meses % bonusMes != 0) {
+        acumulodeposito += valorCada;
+        div_exibir.innerHTML += `${meses}º Mês: R$ ${acumulodeposito} <br> `;
+      } else {
+        acumulodeposito += valorCada + acumulodeposito * 0.01;
+        div_exibir.innerHTML += `${meses}º Mês: R$ ${acumulodeposito} ⭐<br>`;
+      }
+    }
+
+    div_exibir.innerHTML += `Total guardado: R$${acumulodeposito}`;
+  }
+</script>
