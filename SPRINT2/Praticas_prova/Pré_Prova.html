@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    O tamanho da pista (em metros);
+    <input type="text" id="ipt_TamPista" /><br />
+    Quantos metros a tartaruga anda por rodada;
+    <input type="text" id="ipt_tartaruga" /><br />
+    Quantos metros o coelho anda por rodada;
+    <input type="text" id="ipt_coelho" /><br />
+    A cada quantas rodadas o coelho dorme.
+    <input type="text" id="ipt_rodada" /><br />
+
+    <button onclick="largada()">Dar largada</button>
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let soneca = 0;
+  let acumTartaruga = 0;
+  let acumCoelho = 0;
+
+  function largada() {
+    let TamPista = Number(ipt_TamPista.value);
+    let tartaruga = Number(ipt_tartaruga.value);
+    let coelho = Number(ipt_coelho.value);
+    let rodadaDorm = Number(ipt_rodada.value);
+    let rodada = 0;
+
+    if (TamPista <= 0 || tartaruga <= 0 || coelho <= 0 || rodadaDorm <= 0) {
+      alert(`não pode menor que zero`);
+    } else if (tartaruga >= coelho) {
+      alert(`tartarua não pode ser rapida`);
+    } else if (rodadaDorm < 2) {
+      alert(`senão o coelho dormiria em todas as rodadas`);
+    } else {
+      while (acumCoelho < TamPista && acumTartaruga < TamPista) {
+        rodada++;
+
+        if (rodada % rodadaDorm == 0) {
+          acumTartaruga += tartaruga;
+          soneca++;
+          div_exibir.innerHTML += `"Rodada ${rodada}: Tartarugo ${acumTartaruga} m | Coelhildo ${acumCoelho} m - Coelho dormindo (zzz...)<br>`;
+        } else {
+          acumTartaruga += tartaruga;
+          acumCoelho += coelho;
+          div_exibir.innerHTML += `"Rodada ${rodada}: Tartarugo ${acumTartaruga} m | Coelhildo ${acumCoelho} m <br>`;
+        }
+      }
+
+  if (acumTartaruga == acumCoelho) {
+  div_exibir.innerHTML += `Resultado: <br> "Empate na rodada ${rodada}!"`;
+   }  else if(acumTartaruga > acumCoelho){
+        div_exibir.innerHTML += ` Resultado: <br>
+       "Tartarugo Devagarinho venceu na rodada ${rodada}!"<br>
+       "Coelhildo Soneca completou ${acumCoelho * 100 / TamPista}% da pista."<br>
+       "O coelho tirou ${soneca} sonecas, o que representa ${(soneca * 100 / rodada).toFixed(2)}% das rodadas."`
+
+      }else{
+
+        div_exibir.innerHTML += ` Resultado: <br>
+       "Coelho venceu na rodada ${rodada}!"<br>
+       "Tartaruga completou ${acumTartaruga * 100 / TamPista}% da pista."<br>
+      "O coelho tirou ${soneca} sonecas, o que representa ${(soneca * 100 / rodada).toFixed(2)}% das rodadas."`
+      }
+
+
+    }
+  }
+</script>

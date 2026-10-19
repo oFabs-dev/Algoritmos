@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+     <button onclick="ver()">ver</button>
+
+    <div id="div_exibir"></div>
+
+</body>
+</html>
+
+<script>
+
+
+function ver(){
+let frase = 'AMOR FATI'
+
+
+div_exibir.innerHTML = `
+${frase.length} <br>
+${frase[0]} <br>
+${frase[frase.length - 1]} <br>
+${frase.indexOf('AMOR')}<br>
+${frase.indexOf('Carro')}<br>
+${frase.includes('AMOR')}<br>
+${frase.startsWith('AMOR')}<br>
+${frase.endsWith('FATI')}<br>
+${frase.replace('A','4')}<br>
+${frase.replaceAll('A','4')}
+
+`
+
+
+
+}
+
+
+</script>

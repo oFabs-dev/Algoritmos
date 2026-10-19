@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    peso do pacote, em kg
+    <input type="text" id="ipt_kg" />
+
+    distância até o destino, em km
+    <input type="text" id="ipt_km" />
+
+    Solicite o valor da compra que originou o envio
+    <input type="text" id="ipt_valor" />
+
+    <select id="select_tipo">
+      <option disabled selected>Escolha</option>
+      <option>Normal</option>
+      <option>Frágil</option>
+      <option>Perigoso</option>
+    </select>
+
+    <button onclick="calcular()">Calcular frete</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function calcular() {
+    let kg = Number(ipt_kg.value);
+    let km = Number(ipt_km.value);
+    let valor = Number(ipt_valor.value);
+    let tipo = select_tipo.value;
+    let frete = 0
+
+    if ( kg < 0 || kg > 1000 || km < 0) {
+      alert(`Envio inválido: verifique peso e distância`);
+    } else if (tipo == "Perigoso" && km > 500) {
+      alert(
+        `Envio não permitido para este tipo de produto na distância informada`,
+      );
+    } else {
+      if ((kg <= 5 && km <= 50) || valor >= 300) {
+        div_exibir.innerHTML = `FRETE GRATUITO`;
+      }else if(tipo == 'Frágil' || kg > 50){
+        frete = km * 2 + 50
+        div_exibir.innerHTML = `Valor do frete: R$ ${frete} + taxa`
+      }else{
+        frete = km * 2
+        div_exibir.innerHTML = `Valor do frete: R$ ${frete}`
+      }
+    }
+  }
+</script>
