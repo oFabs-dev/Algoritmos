@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 10. Registro de Números com Histórico, Maior e Menor Valor
+Crie um programa o qual:  
+a) Tenha um campo "Digite um número qualquer";  
+
+b) Tenha um botão "Analisar histórico" que ao ser clicado, o número é cadastrado em algum lugar e, em seguida, 
+deve aparecer um histórico dos números cadastrados, bem como o maior e o menor, como no exemplo a seguir:  
+
+   1º Número: 15  
+
+   2º Número: 22  
+
+   3º Número: 19  
+
+   4º Número: 5  
+
+   Maior: 22  
+
+   Menor: 5  
+
+OBS: Para encontrar o 'maior' e 'menor' valor, deve utilizar uma variável auxiliar e comparar todos os itens do vetor. 
+
+            let minhaLista = [10, 20, 5, 8];
+            let menorValor = minhaLista[0];   // começa com o número 10 sendo o menor valor;
+            let maiorValor = minhaLista[0];   // começa com o número 10 sendo o maior valor;
+
+        Para essa lista acima, eu posso afirmar que:
+
+Na primeira iteração, o 10 é o maior e menor valor naquele momento, então criamos as variáveis utilizando minhaLista[0].
+Na segunda iteração, 20 é maior que 10, então passa a ser o maior valor, enquanto 10 continua sendo o menor valor do vetor naquele momento.
+Na terceira iteração, 5 é menor que 10, então passa a ser o menor valor, enquanto 20 continua sendo o maior valor do vetor naquele momento.
+Na última iteração, 8 não é menor que 5 e nem maior que 20, então 5 continua sendo o menor valor, enquanto 20 continua sendo o maior valor do vetor naquele momento.
+        Ao final dessas iterações, podemos afirmar que comparamos todos os números do vetor, iniciando com o valor 10, até encontrarmos algo que seja maior que o 
+        "maiorValor" e algo menor que o "menorValor", para reatribuir essas variáveis auxiliares. 
+
+ -->
+
+    Digite um número qualquer
+    <input type="text" id="ipt_num" />
+
+    <button onclick="analisar()">Analisar Histórico</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let ListaNumero = [];
+
+  function analisar() {
+    let num = Number(ipt_num.value);
+    ListaNumero.push(num);
+    let maior = ListaNumero[0];
+    let menor = ListaNumero[0];
+
+    div_exibir.innerHTML = ` `;
+
+    for (let i = 0; i < ListaNumero.length; i++) {
+      div_exibir.innerHTML += `${i + 1}º Número: ${ListaNumero[i]} <br>`;
+
+      if (maior < ListaNumero[i]) {
+        maior = ListaNumero[i];
+      }
+
+      if(menor > ListaNumero[i]){
+        menor = ListaNumero[i]
+      }
+  
+    }
+
+    div_exibir.innerHTML += ` Maior = ${maior} <br> Menor = ${menor}`;
+
+
+  }
+</script>

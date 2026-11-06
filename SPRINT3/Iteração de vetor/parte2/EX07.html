@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 7. Controle de Estoque de Produtos com Cálculo de Valor Total
+Crie um programa o qual:  
+a) Pergunte ao usuário o preço de um produto; 
+
+b) Ao clicar em "Cadastrar", o preço fica cadastrado num lugar que o usuário não vê; 
+
+c) Ao clicar em "Atualizar Estoque", deve aparecer a lista de preços cadastrados (em ordem inversa) e um texto como este abaixo:  
+
+   Você tem X produtos cadastrados em estoque  
+
+   Seu estoque vale R$Y 
+
+Em que X é a quantidade de produtos cadastrados pelo usuário e Y é a soma de todos os valores. 
+
+ -->
+
+    Qual o preço do pruduto?
+    <input type="text" id="ipt_preco" />
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <button onclick="atualizar()">Atualizar</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let ListaPreço = [];
+  let qtdProdutos = 0;
+
+  function cadastrar() {
+    let preco = Number(ipt_preco.value);
+    ListaPreço.push(preco);
+
+    qtdProdutos++;
+    div_exibir.innerHTML += `CADASTRADO<br>`;
+  }
+
+  function atualizar(){
+     let soma = 0
+
+    for(let i = 0; i < ListaPreço.length; i ++){
+        soma += ListaPreço[i]
+    }
+
+    div_exibir.innerHTML = `Você tem ${qtdProdutos} produtos cadastrados em estoque  <br> <br>
+
+   Seu estoque vale R$${soma}`
+
+
+  }
+</script>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 17. Playlist de Músicas
+Crie um programa o qual:
+
+a) Tenha os campos “Nome da música” e “Duração (em minutos)”, e um botão “Adicionar à playlist”;
+
+b) Ao adicionar, exiba: “Bohemian Rhapsody entrou na playlist!”
+
+c) Não permita nome vazio nem duração menor ou igual a 0. Músicas repetidas são permitidas.
+
+d) Ao clicar em “Ver playlist”, exiba as músicas em ordem inversa e, abaixo:
+
+    Total de músicas: X
+
+    Duração total: Y minutos
+
+    Música mais longa: NOME
+
+e) Tenha um campo “Pesquisar música” e um botão “Pesquisar”. Ao clicar, exiba:
+
+    “Essa música não está na playlist”
+
+OU
+
+    “A música  Bohemian Rhapsody aparece 2 vezes na playlist, nos índices: 1, 4”
+
+OBS: Assim como no exercício 6, utilize o for para encontrar todas as posições, pois o indexOf encontra apenas a primeira. -->
+
+    Nome da Música
+    <input type="text" id="ipt_musica" />
+
+    Duração
+    <input type="text" id="ipt_duracao" />
+
+    <button onclick="add()">Adicionar à playlist</button>
+
+    <button onclick="playlist()">Ver playlist</button> <br>
+
+    Pesquisar musica 
+    <input type="text" id="ipt_pesquisa">
+    <button onclick="pesquisar()">Pesquisar música</button>
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  listaMusic = [];
+  listaDuracao = [];
+  listaIndice = []
+
+  function add() {
+    let music = ipt_musica.value;
+    let duracao = Number(ipt_duracao.value);
+
+    if (music == ``) {
+      alert(`vazio`);
+    } else if (duracao <= 0) {
+      alert(`duracao negativa??`);
+    } else {
+      listaMusic.push(music);
+      listaDuracao.push(duracao);
+      div_exibir.innerHTML += `${music} entrou na playlist!`;
+    }
+  }
+
+  function playlist() {
+    let duracaoTotal = 0;
+    let maisLonga = listaMusic[0]
+
+    div_exibir.innerHTML = ``;
+    for (let i = listaMusic.length - 1; i >= 0; i--) {
+      div_exibir.innerHTML += `${listaMusic[i]} <br>`;
+
+      duracaoTotal += listaDuracao[i]
+
+      if(maisLonga < listaDuracao[i]){
+        maisLonga = listaMusic[i]
+      }
+    }
+
+    div_exibir.innerHTML += ` Total de músicas: ${listaMusic.length}<br>
+
+    Duração total: ${duracaoTotal} minutos<br>
+
+    Música mais longa: ${maisLonga}`
+  }
+
+  function pesquisar(){
+    let pesquisa = ipt_pesquisa.value
+    let qtd = 0
+
+    div_exibir.innerHTML = ``
+
+    if(listaMusic.includes(pesquisa)){
+
+        for(let i = 0; i < listaMusic.length; i ++){
+            if(listaMusic[i] == pesquisa){
+                qtd ++
+                listaIndice.push(i)
+            }
+        }
+
+         div_exibir.innerHTML += `A música ${pesquisa} aparece ${qtd} vezes na playlist, nos índices: ${listaIndice}`
+
+    }else{
+        
+        div_exibir.innerHTML += `Essa música não está na playlist`
+    
+    }
+
+
+
+
+  }
+</script>

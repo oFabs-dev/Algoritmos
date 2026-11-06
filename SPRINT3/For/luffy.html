@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Desafio One Piece - Invasão de Impel Down Condições de conclusão</h1>
+
+    Quantidade de batalhas
+    <input type="text" id="ipt_batalha" /> <br />
+    Quantidade de marinheiros em cada batalha
+    <input type="text" id="ipt_marinheiro" /> <br />
+    Quantidade de carnes disponíveis
+    <input type="text" id="ipt_carnes" /> <br />
+
+    <button onclick="batalhar()">Iniciar confronto</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  function batalhar() {
+    let batalha = Number(ipt_batalha.value);
+    let marinheiros = Number(ipt_marinheiro.value);
+    let carnes = Number(ipt_carnes.value);
+    let marinheirosDerrotados = 0;
+    let energia = 100;
+    let derrotado = false;
+
+    
+    for (let i = 0; i < batalha && !derrotado; i++) {
+      energia -= 10;
+      if (energia < 5 && carnes != 0) {
+        energia += 100;
+        carnes--;
+      } else if (energia < 5) {
+        derrotado = true;
+      }
+
+      for (let j = 0; j < marinheiros && !derrotado; j++) {
+        if (energia < 5 && carnes != 0) {
+          energia += 100;
+          carnes--;
+        } else if (energia < 5) {
+          derrotado = true;
+        }
+
+        if (!derrotado) {
+          energia -= 5;
+          marinheirosDerrotados++;
+        }
+      }
+    }
+
+    if (!derrotado) {
+      div_exibir.innerHTML = `Resultado: Luffy saiu vitorioso! <br>
+Quantidade de carnes restantes: ${carnes} <br>
+Quantidade de marinheiros derrotados: ${marinheirosDerrotados} <br>
+Energia restante ao final das batalhas: ${energia}`;
+    } else {
+      div_exibir.innerHTML = `Resultado: Luffy foi derrotado! Sobraram ${marinheiros * batalha - marinheirosDerrotados} marinheiros.<br>
+Quantidade de carnes restantes: ${carnes}<br>
+Quantidade de marinheiros derrotados: ${marinheirosDerrotados}<br>
+Energia restante ao final das batalhas: ${energia}`;
+    }
+  }
+</script>

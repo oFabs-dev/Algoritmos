@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 15. Estacionamento
+Crie um programa o qual:
+
+a) Tenha um campo “Placa do veículo” e um botão “Estacionar”;
+
+b) O estacionamento tem apenas 5 vagas. Ao estacionar, exiba: “Veículo ABC1234 estacionado! Restam X vagas.”
+
+c) Não permita:
+
+    Placa vazia (alert: "Preencha a placa do veículo!")
+
+    Placa repetida (alert: “Esse veículo já está no estacionamento!”)
+
+    Estacionar com todas as vagas ocupadas (alert: “Estacionamento lotado!”)
+
+d) Tenha um campo “Buscar placa” e um botão “Buscar”. Ao clicar, exiba:
+
+    “O veículo ABC1234 está na vaga 3”
+
+OU
+
+    “Esse veículo não está no estacionamento”
+
+OBS: Considere que a primeira vaga é a vaga 1, e não a 0. -->
+
+    Placa do veiculo
+    <input type="text" id="ipt_placa" />
+    <button onclick="estacionar()">Estacionar</button>
+
+    Buscar Placa
+    <input type="text" id="ipt_buscar" />
+    <button onclick="buscar()">Buscar</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let vagas = 5;
+  let listaPlaca = [];
+  let listaVagaAtual = [];
+
+  function estacionar() {
+    let placa = ipt_placa.value;
+
+    if (placa == ``) {
+      alert(`Preencha a placa do veículo!`);
+    } else if (listaPlaca.includes(placa)) {
+      alert(`Esse veículo já está no estacionamento!`);
+    } else if (vagas == 0) {
+      alert(`Estacionamento lotado!`);
+    } else {
+      listaPlaca.push(placa);
+      listaVagaAtual.push(vagas);
+      div_exibir.innerHTML = `O veículo ${placa} está na vaga ${vagas}`;
+      vagas--;
+    }
+  }
+
+  function buscar() {
+    let buscar = ipt_buscar.value;
+    let vaga = 0;
+
+    if (listaPlaca.includes(buscar)) {
+      for (let i = 0; i < listaPlaca.length; i++) {
+        if (buscar == listaPlaca[i]) {
+          vaga = listaVagaAtual[i];
+          div_exibir.innerHTML = `O veículo ${buscar} está na vaga ${vaga}`;
+        }
+      }
+    } else {
+      div_exibir.innerHTML = `Esse veículo não está no estacionamento`;
+    }
+  }
+</script>

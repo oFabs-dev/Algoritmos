@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 6. Registro de Linhas de Ônibus com Pesquisa de Histórico
+Crie um programa o qual:  
+a) O usuário vá registrando os nomes das linhas de ônibus que ele pegou durante a semana. Ele digita o nome da linha e clica em "Gravar busão"; 
+
+b) Cada vez que o botão é clicado o programa deve mostrar a lista de linhas de ônibus abaixo do botão e em ordem inversa
+ (do último para o primeiro);  
+
+c) Deve haver outro campo em que ele pesquisa por uma linha que já tenha pego. Ao clicar em "Pesquisar", deve ver uma dessas frases, abaixo 
+da lista de linhas de ônibus que já pegou:  
+
+   Você nunca pegou essa linha (caso não tenha cadastrado a linha em questão)  
+
+   OU  
+
+   Você já pegou essa linha 4 vezes, nos índices: 1, 3, 7, 8  
+
+   (supondo que ele cadastrou a mesma linha na 2ª vez, na 4ª vez, na 8ª vez e na 9ª vez).
+
+  OBS: Pode utilizar o .includes() para validar se existe o registro no vetor, antes mesmo de começar as iterações.
+  OBS2: Utilize o for para iterar o vetor, percorrendo todos os itens. Quando encontrar um registro igual ao que o usuário pesquisou, 
+  grave o índice no qual encontrou, para a mensagem final. Neste cenário, indexOf não daria certo, pois encontra apenas o primeiro registro na
+   lista. -->
+
+    Linhas de onibus que você pegou
+    <input type="text" id="ipt_linha" />
+    <button onclick="gravar()">Gravar Busão</button>
+
+    <div id="div_exibir"></div>
+
+    Pesquisar uma linha
+    <input type="text" id="ipt_pesq" />
+    <button onclick="pesquisar()">Pesquisar</button>
+
+    <div id="div_pesq"></div>
+  </body>
+</html>
+
+<script>
+  let listaLinhas = [];
+
+
+  function gravar() {
+    let linha = ipt_linha.value;
+    listaLinhas.push(linha);
+
+    div_exibir.innerHTML = ``;
+
+    for (let i = listaLinhas.length - 1; i >= 0; i--) {
+      div_exibir.innerHTML += `${listaLinhas[i]} <br>`;
+    }
+  }
+
+  function pesquisar() {
+    let pesquisa = ipt_pesq.value;
+    let qtdLinhas = 0;
+
+
+
+    for (let i = listaLinhas.length - 1; i >= 0; i--) {
+      if (listaLinhas.includes(pesquisa)) {
+        qtdLinhas++;
+      }
+    }
+
+
+    div_pesq.innerHTML = `Você já pegou essa linha ${qtdLinhas} vezes, nos índices:`;
+    for (
+      let i = listaLinhas.length - 1;
+      i >= 0 && listaLinhas.includes(pesquisa);
+      i--
+    ) {
+      div_pesq.innerHTML += `[${i}]`;
+    }
+
+    if (listaLinhas.includes(pesquisa) == false) {
+      div_pesq.innerHTML = `Você nunca pegou essa linha`;
+    }
+  }
+</script>

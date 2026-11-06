@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 12. Sistema Avançado de Estoque com Análise de Produtos e Estatística
+Refaça a 10ª questão de tal forma que, ao final do relatório, o programa exiba:  
+
+a) O nome do produto mais caro (encontre o maior preço e afirme o NOME do produto correspondente)
+b) O nome do produto mais barato (encontre o menor preço e afirme o NOME do produto correspondente)
+c) A soma dos preços de compra dos produtos
+d) A média de preço de venda dos produtos. 
+
+OBS: deve seguir a mesma lógica de maior/menor descrito no exercício 10, para encontrar o 
+menor preço e maior preço, para depois associar com o nome do produto correspondente. -->
+
+
+ Nome do produto
+    <input type="text" id="ipt_produto" />
+
+    Preço de compra
+    <input type="text" id="ipt_preco" />
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="relatorio()">Relatório de estoque</button>
+    <button onclick="relatorioGeral()">Relatório Geral</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let listaProduto = [];
+  let listaPreco = [];
+  let total = 0;
+  
+
+  function cadastrar(){
+    let produto = ipt_produto.value;
+    let preco = Number(ipt_preco.value);
+
+    listaPreco.push(preco);
+    listaProduto.push(produto);
+    total++;
+  }
+
+  function relatorio(){
+    div_exibir.innerHTML = `Total de produtos= ${total} <br>`;
+
+    for (let i = 0; i < listaProduto.length; i++) {
+      div_exibir.innerHTML += `Produto ${i + 1}: ${listaProduto[i]} <br> 
+
+   Preço de compra: R$${listaPreco[i]} Vender por R$${listaPreco[i] + listaPreco[i] * 0.25} <br><br>`;
+    }
+  }
+
+  function relatorioGeral(){
+    let maior = listaPreco[0]
+    let menor = listaPreco [0]
+    let soma = 0
+    let media = 0
+    let produto = ipt_produto.value;
+    let preco = Number(ipt_preco.value);
+    let produtoMaior =  listaProduto[0]
+    let produtoMenor = listaProduto[0]
+
+ for (let i = 0; i < listaProduto.length; i++) {
+      
+    if(maior < listaPreco[i]){
+        maior = listaPreco[i]
+        produtoMaior = listaProduto[i] 
+    }
+
+    if(menor > listaPreco[i]){
+        menor = listaPreco[i]
+        produtoMenor = listaProduto[i] 
+    }
+
+    soma += listaPreco[i]
+  }
+
+  div_exibir.innerHTML = `nome do produto mais caro | ${produtoMaior} | preço = ${maior} <br>
+nome do produto mais barato | ${produtoMenor} | preço = ${menor}<br>
+soma dos preços de compra = ${soma}<br>
+média de preço de venda = ${soma / total}<br>`
+
+
+
+
+  }
+</script>

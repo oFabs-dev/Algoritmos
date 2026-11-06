@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2. Filmes em Cores: Azul e Vermelho Alternados
+Crie um programa o qual:
+a) O usuário informa os nomes dos filmes que mais gosta e clica em "Cadastrar"; 
+b) Na medida em que vai cadastrando, os filmes vão aparecendo um abaixo do outro, abaixo do botão, só que aparecem na cor azul,
+ depois vermelho, depois azul, depois vermelho, e assim por diante ...  
+
+  -->
+
+nomes dos filmes que mais gosta
+<input type="text" id="ipt_filme">
+
+<button onclick="cadastrar()">Cadastrar</button>
+
+<div id="div_exibir"></div>
+
+
+
+</body>
+</html>
+
+<script>
+
+    let listaFilme = []
+
+function cadastrar(){
+let filme = ipt_filme.value
+listaFilme.push(filme)
+let ultimo = listaFilme.length - 1
+
+if(ultimo % 2 == 0){
+
+div_exibir.innerHTML +=  `<span style="color: red;">${listaFilme[listaFilme.length - 1]} <br></span>`
+}else{
+
+div_exibir.innerHTML +=  `<span style="color: blue;">${listaFilme[listaFilme.length - 1]} <br></span>`
+}
+
+
+
+}
+
+</script>

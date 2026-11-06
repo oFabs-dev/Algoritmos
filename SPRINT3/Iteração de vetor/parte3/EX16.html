@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 16. Eleição de Representante de Turma
+Crie um programa o qual:
+
+a) Tenha um ‘combo’ (select/option) “Escolha seu candidato”, com 3 nomes de candidatos.
+
+b) Ao clicar em “Votar”, o voto é registrado num local invisível ao usuário e é exibido: “Voto registrado! Obrigado por participar.”
+
+c) Ao clicar em “Apurar votos”, exiba:
+
+    Total de votos: T
+
+    Mariana: X votos
+
+    Cléber: Y votos
+
+Adalberto: Z votos
+
+d) Abaixo, exiba o resultado:
+
+    “O(A) vencedor(a) é NOME!” (caso um candidato tenha mais votos que os outros)
+
+     “Houve empate!” (caso o maior número de votos se repita)
+
+    “Nenhum voto registrado” (caso o vetor esteja vazio)
+
+OBS: Utilize o for para percorrer o vetor de votos, com uma variável contadora para cada candidato. -->
+
+
+
+Escolha seu candidato
+<select id="select_cand">
+    <option>JP</option>
+    <option>Fernando</option>
+    <option>Frizza</option>
+</select>
+
+<button onclick="votar()">Votar</button>
+<button onclick="apurar()">Apurar votos</button>
+
+<div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+let listaVotos = []
+let total = 0
+
+function votar(){
+let voto = select_cand.value
+
+listaVotos.push(voto)
+
+div_exibir.innerHTML += `Voto registrado! Obrigado por participar.<br>`
+
+}
+
+
+
+function apurar(){
+let JP = 0
+let Fernando = 0
+let Frizza = 0
+let msg = ``
+
+
+
+for(let i  = 0; i < listaVotos.length; i++){
+  if(listaVotos[i] == 'JP'){
+    JP ++
+  }else if(listaVotos[i] == 'Fernando'){
+    Fernando ++
+  }else{
+    Frizza ++
+  }
+
+
+    }
+
+div_exibir.innerHTML = `   
+    Total de votos: ${listaVotos.length} <br>
+    JP: ${JP} votos<br>
+    Fernando: ${Fernando} votos<br>
+    Frizza: ${Frizza} votos<br>`
+
+
+if(listaVotos.length == 0){
+    msg += `Nenhum voto registrado`
+}else if(JP > Fernando && JP > Fernando){
+    msg += `O(A) vencedor(a) é JP!`
+}else if(Fernando > JP && Fernando > Frizza){
+    msg += `O(A) vencedor(a) é Fernando!`
+}else if(Frizza > JP && Frizza > Fernando){
+    msg += `O(A) vencedor(a) é Frizza!`
+}else{
+    msg += `Houve empate!`
+}
+
+div_exibir.innerHTML += `${msg}`
+
+}
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 11. Sistema de Cadastro de Produtos com Relatório de Preço de Venda
+Crie um pequeno sistema de loja eletrônica o qual:  
+a) Tenha um campo "Nome do produto" e outro "Preço de compra"; 
+
+b) Tenha um botão "Cadastrar". Ao clicar nele, o nome e preço ficam cadastrados em algum lugar, por enquanto invisível ao usuário  
+
+c) Tenha um botão "Relatório de estoque". Ao clicar nele, deve aparecer uma listagem dos produtos cadastrados com seu valor para venda, como no exemplo a seguir:  
+
+   Total de produtos: 2  
+
+   Produto 1: Leite de arroz  
+
+   Preço de compra: R$1.50. Vender por R$1,87  
+
+   Produto 2: Caixa de chocolates  
+
+   Preço de compra: R$9.00. Vender por R$11,25  
+
+O preço de venda é sempre o valor da compra mais 25%. 
+
+OBS: Para esse cenário, podemos utilizar 2 vetores, onde um representa o nome do produto e outro representa o preço, como: 
+
+            let nomesProdutos = [  'lápis', 'lapiseira', 'borracha'  ];    // 3 itens, posições 0, 1 e 2
+            let precosProdutos = [    1.5,          5,            0.50       ];    // 3 itens, posições 0, 1 e 2
+
+        Quando cadastramos um produto, devemos inserir o nome dele no primeiro vetor e o preço dele no segundo, depois, para associar as informações, 
+        devemos utilizar o índice do registro.
+
+        No exemplo acima, podemos afirmar que o lápis custa R$1,50, pois ambos os registros são o índice 0 dos seus respectivos vetores. Já a borracha, custa 
+        R$0,50, pois ambos são o índice 2.
+
+        Para acessar o nome/preço do produto ao mesmo tempo, pode usar o mesmo índice, como: nomesProdutos[0] e precosProdutos[0] (neste caso, traria os valores 
+        'lápis' e 1.5)
+
+OBS2: Existem outras formas para fazer associação de valores, mas por enquanto, recomendamos seguir como no exemplo acima.
+ -->
+
+    Nome do produto
+    <input type="text" id="ipt_produto" />
+
+    Preço de compra
+    <input type="text" id="ipt_preco" />
+
+    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="relatorio()">Relatório de estoque</button>
+
+    <div id="div_exibir"></div>
+  </body>
+</html>
+
+<script>
+  let listaProduto = [];
+  let listaPreco = [];
+  let total = 0;
+
+  function cadastrar(){
+    let produto = ipt_produto.value;
+    let preco = Number(ipt_preco.value);
+
+    listaPreco.push(preco);
+    listaProduto.push(produto);
+    total++;
+  }
+
+  function relatorio(){
+    div_exibir.innerHTML = `Total de produtos= ${total} <br>`;
+
+    for (let i = 0; i < listaProduto.length; i++) {
+      div_exibir.innerHTML += `Produto ${i + 1}: ${listaProduto[i]} <br> 
+
+   Preço de compra: R$${listaPreco[i]} Vender por R$${listaPreco[i] + listaPreco[i] * 0.25} <br><br>`;
+    }
+  }
+</script>

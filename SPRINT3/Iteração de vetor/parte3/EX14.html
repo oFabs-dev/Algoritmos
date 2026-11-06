@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 14. Registro de Temperaturas
+Crie um programa o qual:
+
+a) Tenha um campo “Temperatura do dia” e um botão “Registrar”;
+
+b) Ao registrar, exiba: “Temperatura do dia 3 anotada!”
+
+c) Não permita temperaturas menores que -20 ou maiores que 50 (alert: “Temperatura inválida!”);
+
+d) A cada registro, exiba a lista em ordem inversa, com a classificação de cada dia:
+
+    Dia 3: 33°C – Calor
+
+    Dia 2: 22°C – Agradável
+
+    Dia 1: 11°C – Frio
+
+Regras:
+
+    Abaixo de 15°C: Frio
+
+    De 15°C a 24°C: Agradável
+
+    Acima de 24°C: Calor
+
+e) Abaixo da lista, exiba:
+
+    Maior temperatura: X°C
+
+    Menor temperatura: Y°C
+
+    Dias de calor: Z
+
+OBS: Para maior e menor, siga a mesma lógica do exercício 10.
+
+15. Estacionamento
+Crie um programa o qual: -->
+
+Temperatura do dia
+<input type="text" id="ipt_tempDia">
+
+<button onclick="registrar()">Registrar</button>
+
+
+<div id="div_dia"></div>
+<div id="div_exibir"></div>
+<div id="div_relatorio"></div>
+</body>
+</html>
+
+<script>
+
+let listaTemp = []
+let diaCont = 0
+
+function registrar(){
+let tempDia = Number(ipt_tempDia.value)
+
+div_exibir.innerHTML = ``
+
+if(tempDia < -20 || tempDia > 50){
+    alert(`Temperatura inválida!`)
+}else{
+    listaTemp.push(tempDia) 
+    diaCont ++
+    
+    div_dia.innerHTML = `Temperatura do dia ${diaCont} anotada!`
+}
+
+let maior = listaTemp[0]
+let menor = listaTemp[0]
+
+for(let i = listaTemp.length - 1; i >= 0; i--){
+
+    if(listaTemp[i] < 15){
+        div_exibir.innerHTML += `Dia ${i+1}: ${listaTemp[i]}°C – Frio<br>`
+    }else if(listaTemp[i] <= 24 ){
+        div_exibir.innerHTML += `Dia ${i+1}: ${listaTemp[i]}°C – Agradavel<br>`
+    }else{
+        div_exibir.innerHTML += `Dia ${i+1}: ${listaTemp[i]}°C – Calor<br>`
+    }
+
+}
+
+
+for(let i = listaTemp.length - 1; i >= 0; i--){
+
+    if(maior < listaTemp[i]){
+        maior = listaTemp[i]
+    }
+
+    if(menor > listaTemp[i]){
+        menor = listaTemp[i]
+    }
+}
+
+
+div_relatorio.innerHTML = `   Maior temperatura: ${maior}°C<br>
+
+    Menor temperatura: ${menor}°C<br>
+
+    Dias de calor: ${listaTemp.length}`
+
+}
+
+
+</script>

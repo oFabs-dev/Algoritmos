@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    senha
+    <input type="text" id="ipt_senha" oninput="verificar()" />
+
+    <button onclick="cadastrar()">cadastrar senha bau</button>
+
+    <div id="div_exibir">O baú não pode ficar sem senha, marujo!</div>
+    <div id="div_lista"></div>
+  </body>
+</html>
+
+<script>
+  function verificar() {
+    let senha = ipt_senha.value;
+    let contarPontos = 0;
+
+   
+    if (senha.toLowerCase() != senha && senha.toUpperCase() != senha) {
+      contarPontos += 2;
+    }
+
+    if (
+      senha.includes(`0`) ||
+      senha.includes(`1`) ||
+      senha.includes(`2`) ||
+      senha.includes(`3`) ||
+      senha.includes(`3`) ||
+      senha.includes(`4`) ||
+      senha.includes(`5`) ||
+      senha.includes(`6`) ||
+      senha.includes(`7`) ||
+      senha.includes(`8`) ||
+      senha.includes(`9`)
+    ) {
+      contarPontos++;
+    }
+
+    if (
+      senha.includes(`@`) ||
+      senha.includes(`#`) ||
+      senha.includes(`$`) ||
+      senha.includes(`%`) ||
+      senha.includes(`&`) ||
+      senha.includes(`*`)
+    ) {
+      contarPontos++;
+    }
+
+    if (senha.length >= 8) {
+      contarPontos++;
+    }
+
+    if (senha.length >= 12) {
+      contarPontos++;
+    }
+
+    if (senha.includes("pirata") == true) {
+      contarPontos -= 2;
+    }
+
+    if (senha.includes("123") == true) {
+      contarPontos -= 2;
+    }
+
+    if (contarPontos <= 2) {
+      div_exibir.innerHTML = `Fraca`;
+    } else if (contarPontos <= 4) {
+      div_exibir.innerHTML = `Média`;
+    } else if (contarPontos <= 5) {
+      div_exibir.innerHTML = `Forte`;
+    } else if (contarPontos <= 6) {
+      div_exibir.innerHTML = `Inquebravel`;
+    }
+
+    if (senha.includes(" ")) {
+      div_exibir.innerHTML = `Senhas com espaço confundem o papagaio!`;
+    }
+
+
+
+
+  }
+
+
+  function cadastrar(){
+
+      
+    let listaSenha = [];
+    let contarLista = 0;
+
+
+
+      if (listaSenha.includes(senha)) {
+        div_exibir.innerHTML = `Essa senha já tranca outro baú! Seja criativo, marujo! `;
+      }else{
+        listaSenha.push(senha);
+        div_lista.innerHTML += `${senha}`
+      }
+
+
+    
+
+     
+
+
+  }
+</script>

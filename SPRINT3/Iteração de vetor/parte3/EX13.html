@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 13. Lista de Compras
+Crie um programa o qual:
+
+a) Tenha os campos “Produto” e “Preço”, e um botão “Adicionar”;
+
+b) Ao adicionar, exiba: “Café adicionado ao carrinho!”
+
+c) Valide para não permitir, exibindo um alert de erro:
+
+    Produto vazio
+
+    Preço menor ou igual a 0
+
+    Produto repetido
+
+d) Ao clicar em “Ver carrinho”, exiba os produtos e seus preços em ordem inversa em que foram registrados, como:
+
+    Produto 2 - Feijão - R$7.50
+
+    Produto 1 - Arroz - R$10.00
+
+e) Abaixo da listagem do carrinho, deve aparecer:
+
+    Você tem X produtos no carrinho
+
+    Total da compra: R$Y
+
+    Produto mais caro: NOME (R$Z)
+
+OBS: Utilize 2 vetores (nomes e preços), associados pelo índice, como no exercício 11. -->
+
+    Produto
+    <input type="text" id="ipt_produto" />
+
+    Preço
+    <input type="text" id="ipt_preco" />
+
+    <button onclick="adicionar()">Adicionar</button>
+    <button onclick="ver()">Ver carrinho</button>
+
+    <div id="div_exibir"></div>
+
+  </body>
+</html>
+
+<script>
+  let ListaProduto = [];
+  let ListaPreço = [];
+ 
+  let soma = 0
+
+ 
+
+
+  function adicionar() {
+    let produto = ipt_produto.value;
+    let preco = Number(ipt_preco.value);
+
+    if (produto == ``) {
+      alert(`Produto vazio`);
+    } else if (preco <= 0) {
+      alert(`Sem preço`);
+    } else if (ListaProduto.includes(produto)) {
+      alert(`Ja existe`);
+    } else {
+      ListaProduto.push(produto);
+      ListaPreço.push(preco);
+      
+      div_exibir.innerHTML = `${produto} adicionado ao carrinho`      
+    }
+
+}
+
+
+    function ver(){
+     let produto = ipt_produto.value;
+       let preco = Number(ipt_preco.value);
+      let NomeMaior = ListaProduto[0]
+    let precoMaior = ListaPreço[0]
+     let mensagem = ``
+
+
+        for (let i = ListaProduto.length - 1; i >= 0; i--){
+
+        mensagem += `Produto ${i + 1} - ${produto} - ${preco}<br>`
+        soma += ListaPreço[i]
+
+        if(precoMaior < ListaPreço[i]){
+            NomeMaior = ListaProduto[i]
+            precoMaior = ListaPreço[i]
+        }
+
+}
+ mensagem += ` Você tem ${ListaProduto.length} produtos no carrinho<br>
+                 Total da compra: R$${soma}<br> 
+                 Produto mais caro: ${NomeMaior} (R$${precoMaior}) `
+
+           div_exibir.innerHTML = `${mensagem}`       
+    }
+
+   
+
+    
+
+  
+</script>

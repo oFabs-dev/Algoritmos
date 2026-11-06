@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 9. Controle de Campanha de Time de Futebol com Análise de Aproveitamento
+Crie um programa o qual:  
+a) Cadastre a campanha de um time de futebol num campeonato da seguinte forma:  
+
+a.1) Tenha um 'combo' (select/option) identificado com o texto "Indique o resultado" com os itens:  
+
+  Vitória  
+
+  Empate  
+
+  Derrota  
+
+b) Ao clicar num botão "Registrar jogo", o resultado escolhido em a) é registrado em um local invisível ao usuário e um texto abaixo é exibido (ou atualizado).
+ O texto é como este:  
+
+      O time teve: V vitórias, E empates, D derrotas  
+
+      Pontuação total: X pontos  
+
+      Aproveitamento: Y%  
+
+Em que X é calculado assim: Cada vitória (V) vale 3 pontos. Cada empate (E) vale 1 ponto. Cada derrota (D) vale 0 pontos.  
+
+O Y é o total de pontos conquistados (X) dividido pelo total de pontos possíveis (ou seja, considerando que tivesse vencido todos os jogos) vezes 100.  
+
+c) Deve haver um campo "Indique qual jogo deseja saber o resultado". Na medida em que vai digitando, aparece um texto, abaixo do texto de b) como este:  
+
+  No XXº jogo, o time Ganhou (ou "Perdeu" ou "Empatou")  
+
+ou um texto como este, caso o valor seja de um jogo que não foi cadastrado:  
+
+  Não foi cadastrado um XXº jogo  
+
+Obs: Neste item considere que o usuário ache que 1 indica o 1º jogo. Ou seja, o usuário não imagina que o 1º é o jogo "0" na verdade.  -->
+
+    Qual foi o resultado?
+    <select id="select_resultado">
+      <option>Vitoria</option>
+      <option>Empate</option>
+      <option>Derrota</option>
+    </select>
+
+    <button onclick="registrar()">Registrar jogo</button> <br> <br>
+
+    Indique qual jogo deseja saber o resultado
+    <input type="text" id="ipt_resultado" oninput="resultado()" /> <br> <br>
+
+    <div id="div_exibir">
+      O time teve: 0 vitórias, 0 empates, 0 derrotas <br />
+
+      Pontuação total: 0 pontos <br />
+
+      Aproveitamento: 0%
+    </div>
+
+    <div id="div_resultado"></div>
+  </body>
+</html>
+
+<script>
+  let V = 0;
+  let E = 0;
+  let D = 0;
+  let pontos = 0;
+  let listaResultado = [];
+
+  function registrar() {
+    let resultado = select_resultado.value;
+
+    listaResultado.push(resultado);
+
+    if (resultado == `Vitoria`) {
+      V++;
+      pontos += 3;
+    } else if (resultado == `Empate`) {
+      E++;
+      pontos++;
+    } else {
+      D++;
+    }
+
+    div_exibir.innerHTML = `O time teve: ${V} vitórias, ${E} empates, ${D} derrotas <br />
+
+      Pontuação total: ${pontos} pontos <br />
+
+      Aproveitamento: ${((pontos / ((V + E + D) * 3)) * 100).toFixed(2)}%`;
+  }
+
+  function resultado() {
+    let resultadoEspe = Number(ipt_resultado.value);
+
+    if (listaResultado[resultadoEspe] != undefined) {
+      div_resultado.innerHTML = ` No ${resultadoEspe}º jogo, o time foi ${listaResultado[resultadoEspe]}`;
+    } else {
+      div_resultado.innerHTML = `Não foi cadastrado um ${resultadoEspe}º jogo `;
+    }
+  }
+</script>

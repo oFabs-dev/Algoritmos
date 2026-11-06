@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<!--  
+3. Valores Dinâmicos 
+Crie um programa o qual:
+a) O usuário informa números e clica em "Cadastrar"; 
+b) Tenha três botões, para "Ver Índices Pares", "Ver Valores Pares" e "Ver Todos".
+
+OBS: para validar se o valor é par, utilize o resto da divisão por 2. -->
+
+Digite um valor 
+<input type="text" id="ipt_valor">
+
+
+<button onclick="cadastrar()">Cadastrar</button>
+<button onclick="IndicePar()">Ver Índices Pares</button>
+<button onclick="ValoresPar()">Ver Valores Pares</button>
+<button onclick="VerTodos()">Ver Todos</button>
+<div id="div_exibir"></div>
+</body>
+</html>
+
+<script>
+
+
+let valoresLista = []
+
+function cadastrar(){
+let valor = Number(ipt_valor.value)
+valoresLista.push(valor)
+
+div_exibir.innerHTML += `Cadastrado!<br>`
+
+}
+
+
+function IndicePar(){
+div_exibir.innerHTML = ` `
+for(let i = 0; i < valoresLista.length; i ++){
+
+    if(i % 2 == 0 )
+    
+    div_exibir.innerHTML += `valoresLista[${i}] <br>`
+}
+}
+
+
+function ValoresPar(){
+div_exibir.innerHTML = ` `
+for(let i = 0; i < valoresLista.length; i ++){
+
+    if(valoresLista[i] % 2 == 0 )
+    
+    div_exibir.innerHTML += `${valoresLista[i]} <br>`
+}
+
+}
+
+
+function VerTodos(){
+div_exibir.innerHTML = ` `
+for(let i = 0; i < valoresLista.length; i ++){
+    
+    div_exibir.innerHTML += `${valoresLista[i]} <br>`
+}
+
+
+
+}
+</script>

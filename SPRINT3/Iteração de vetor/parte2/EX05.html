@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 5. Cadastro de Projetos e Classificação de Experiência Profissional
+Crie um programa o qual: 
+a) Pergunte ao usuário o nome de cada projeto que já criou na vida. Ele digita e clica em "Registrar projeto".
+ Na medida em que vai cadastrando, verifique quantos projetos já foram cadastrados e exiba o seguinte texto abaixo:  
+
+     Você já fez X projetos. Por isso você é um profissional Z  
+
+     X é a quantidade de projetos e Z é seu nível de experiência, segundo estas regras:  
+
+     0 a 4: Júnior  
+
+     5 a 12: Pleno  
+
+     13 ou mais: Sênior  
+
+b)  Tenha um botão “Mostrar Projetos” que quando clicado mostra os projetos cadastrados, um abaixo do outro,
+ em ordem inversa ao que foi cadastrado.  -->
+
+    Nome do projeto
+    <input type="text" id="ipt_projeto" />
+
+    <button onclick="registrar()">Registrar</button>
+    <button onclick="mostrar()">Mostrar</button>
+
+    <div id="div_exibir">
+      Você já fez 0 projetos. Por isso você é um profissional Estagiario
+    </div>
+
+    <div id="div_mostrar"></div>
+  </body>
+</html>
+
+<script>
+  let listaProjeto = [];
+  let qtdProjeto = 0;
+
+  function registrar() {
+    let projeto = ipt_projeto.value;
+    listaProjeto.push(projeto);
+    qtdProjeto++;
+
+    if (qtdProjeto <= 4) {
+      div_exibir.innerHTML = `Você já fez ${qtdProjeto} projetos. Por isso você é um profissional Junior`;
+    } else if (qtdProjeto <= 12) {
+      div_exibir.innerHTML = `Você já fez ${qtdProjeto} projetos. Por isso você é um profissional Pleno`;
+    } else {
+      div_exibir.innerHTML = `Você já fez ${qtdProjeto} projetos. Por isso você é um profissional Senior`;
+    }
+  }
+
+function mostrar() {
+
+    for(let i = listaProjeto.length - 1; i >= 0; i--){
+        div_mostrar.innerHTML += `${i} - ${listaProjeto[i]}<br>`
+    }
+    }
+
+</script>
